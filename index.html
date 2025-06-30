@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mateus Correia | Portfólio</title>
+    
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Inter & Fira Code for terminal -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Google+Sans+Text:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" xintegrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        :root {
+            --google-sans-font: 'Google Sans Text', 'Roboto', sans-serif;
+            --fira-code-font: 'Fira Code', monospace;
+            --text-primary: #202124; 
+            --text-secondary: #5f6368; 
+            --blue-primary: #1a73e8; 
+            --blue-hover: #1765cc;
+            --yellow-accent: #fbbc04; 
+            --border-color: #dadce0; 
+            --background-primary: #ffffff;
+            --background-secondary: #f8f9fa; 
+            --card-background: rgba(255, 255, 255, 0.8);
+            --sidebar-background: #202124;
+            --sidebar-text-primary: #e8eaed;
+            --sidebar-text-secondary: #9aa0a6;
+            --health-sphere-color: var(--yellow-accent); 
+            --tech-sphere-color: var(--blue-primary); 
+        }
+
+        html { scroll-behavior: smooth; }
+        body { font-family: var(--google-sans-font); background-color: var(--background-primary); color: var(--text-primary); cursor: none; transition: background-color 0.3s, color 0.3s; }
+        a, button, .lang-btn { cursor: none; }
+        .main-content::-webkit-scrollbar { width: 8px; } 
+        .main-content::-webkit-scrollbar-track { background: transparent; }
+        .main-content::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 4px; }
+        .nav-link { position: relative; transition: all 0.2s ease-in-out; }
+        .nav-link:before { content: ''; position: absolute; left: -1.25rem; top: 50%; transform: translateY(-50%) scaleX(0); width: 4px; height: 24px; background-color: var(--blue-primary); transition: all 0.3s ease; transform-origin: left; border-radius: 2px; }
+        .nav-link:hover, .nav-link.active { color: var(--blue-primary); transform: translateX(4px); }
+        .nav-link:hover:before, .nav-link.active:before { transform: translateY(-50%) scaleX(1); }
+        .scroll-animate { opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease-out, transform 0.5s ease-out; }
+        .scroll-animate.visible { opacity: 1; transform: translateY(0); }
+        .typing-cursor { display: inline-block; width: 3px; height: 1em; background-color: var(--blue-primary); animation: blink 1s infinite; }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+        .lang-btn { opacity: 0.6; transition: all 0.3s ease; border-radius: 50%; padding: 2px; }
+        .lang-btn:hover { transform: scale(1.1); opacity: 1; }
+        .lang-btn.active { opacity: 1; box-shadow: 0 0 0 2px var(--blue-primary);}
+        #mobile-menu { transition: transform 0.3s ease-in-out; }
+        .section-card { background-color: var(--card-background); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid var(--border-color); border-radius: 12px; padding: 1.5rem; }
+        @media (min-width: 768px) { .section-card { padding: 2rem; } }
+        .section-card:hover { transform: translateY(-4px); box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+        .section-divider { height: 2px; border-radius: 1px; margin-top: 0.5rem; margin-bottom: 2rem; }
+        #particles-js { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; }
+        #scroll-progress { position: fixed; top: 0; left: 0; height: 4px; background-color: var(--blue-primary); width: 0%; z-index: 100; }
+        
+        .cursor {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 32px;
+            height: 32px;
+            pointer-events: none;
+            z-index: 9999;
+            transform: translate(-50%, -50%);
+            transition: transform 0.1s ease;
+        }
+        .cursor-dot {
+            width: 6px;
+            height: 6px;
+            background-color: var(--blue-primary);
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .cursor-outline {
+            width: 100%;
+            height: 100%;
+            border: 1px solid var(--blue-primary);
+            border-radius: 50%;
+            transform: scale(0.5);
+            opacity: 0.5;
+            transition: all 0.3s ease-out;
+        }
+        body.cursor-hover .cursor-outline {
+            transform: scale(1);
+            opacity: 1;
+        }
+
+        #synergy-container {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            height: 300px;
+            margin: 2rem auto 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        @media (min-width: 768px) { #synergy-container { height: 350px; } }
+
+        #synergy-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 5;
+        }
+        .sphere {
+            width: 80px;
+            height: 80px;
+            font-size: 0.875rem;
+            position: absolute;
+            z-index: 2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-weight: 500;
+            border-radius: 50%;
+            transition: transform 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+            box-shadow: 0 0 20px rgba(0,0,0,0.2);
+        }
+        @media (min-width: 768px) { .sphere { width: 100px; height: 100px; font-size: 1rem; } }
+
+        #health-sphere {
+            background-color: var(--health-sphere-color);
+            left: 5%;
+            transform: translateX(-50%);
+        }
+        #tech-sphere {
+            background-color: var(--tech-sphere-color);
+            right: 5%;
+            transform: translateX(50%);
+        }
+        #synergy-container.connected #health-sphere,
+        #synergy-container.connected #tech-sphere {
+            transform: translateX(0) scale(0.9);
+            opacity: 0.8;
+        }
+        #synergy-trigger {
+            background-color: var(--blue-primary);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 10;
+        }
+        #synergy-trigger.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+        #synergy-trigger:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        #innovation-word {
+            position: absolute;
+            font-size: 2rem;
+            font-weight: 700;
+            opacity: 0;
+            transform: scale(0.5);
+            transition: opacity 0.8s ease-out 0.5s, transform 0.8s cubic-bezier(0.18, 0.89, 0.32, 1.28) 0.5s;
+            z-index: 6;
+            background: linear-gradient(to right, var(--health-sphere-color) 40%, var(--tech-sphere-color) 60%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        @media (min-width: 768px) { #innovation-word { font-size: 2.5rem; } }
+
+        #synergy-container.word-visible #innovation-word {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .terminal-window-card { background-color: var(--card-background); backdrop-filter: blur(10px); border: 1px solid var(--border-color); border-radius: 12px; overflow: hidden; }
+        .terminal-header { background-color: #e8e8e8; padding: 0.5rem 1rem; display: flex; align-items: center; gap: 0.5rem; }
+        .terminal-btn { width: 12px; height: 12px; border-radius: 50%; }
+        #terminal-static { font-family: var(--fira-code-font); padding: 1.5rem; }
+        .terminal-output { white-space: pre-wrap; color: var(--text-secondary); }
+        .terminal-keyword { color: var(--yellow-accent); font-weight: 500; }
+        .terminal-prompt { color: var(--blue-primary); font-weight: 500; }
+        .terminal-cursor-static { display: inline-block; width: 8px; height: 1.2em; background-color: var(--text-secondary); animation: blink 1.2s infinite; }
+    </style>
+</head>
+<body class="bg-white">
+    <div class="cursor">
+        <div class="cursor-dot"></div>
+        <div class="cursor-outline"></div>
+    </div>
+
+    <div id="particles-js"></div>
+
+    <!-- Mobile Header -->
+    <header class="md:hidden sticky top-0 bg-white/90 backdrop-blur-sm z-40 flex justify-between items-center p-4 border-b border-slate-200">
+        <h1 class="text-xl font-bold">Mateus Correia</h1>
+        <button id="hamburger-btn" class="p-2 text-slate-600">
+            <i class="fas fa-bars fa-lg"></i>
+        </button>
+    </header>
+
+    <div class="flex">
+        <!-- === LEFT SIDEBAR (NAVIGATION) === -->
+        <aside class="hidden md:flex w-full md:w-1/4 lg:w-1/5 p-8 border-r flex-col justify-between h-screen sticky top-0" style="background-color: var(--sidebar-background); border-color: var(--border-color);">
+            <div>
+                <h1 class="text-2xl font-bold mb-12" style="color: var(--sidebar-text-primary);">Mateus Correia</h1>
+                <nav>
+                    <ul class="space-y-4" id="nav-links-desktop" style="color: var(--sidebar-text-secondary);">
+                        <li><a href="#home" class="nav-link" data-translate-key="nav_home">Início</a></li>
+                        <li><a href="#sobre" class="nav-link" data-translate-key="nav_about">Sobre Mim</a></li>
+                        <li><a href="#visao" class="nav-link" data-translate-key="nav_vision">Visão</a></li>
+                        <li><a href="#futuro" class="nav-link" data-translate-key="nav_future">Futuro</a></li>
+                        <li><a href="#experiencia" class="nav-link" data-translate-key="nav_experience">Experiência</a></li>
+                        <li><a href="#projetos" class="nav-link" data-translate-key="nav_projects">Projetos</a></li>
+                        <li><a href="#contato" class="nav-link" data-translate-key="nav_contact">Contato</a></li>
+                        <li><a href="https://drive.google.com/file/d/1UCAcHe7RjsXDvnneBDcSrfia1TdRjaoO/view?usp=sharing" target="_blank" class="nav-link" data-translate-key="nav_cv">Meu CV <i class="fas fa-download fa-xs ml-1"></i></a></li>
+                    </ul>
+                     <div class="mt-12 pt-8 border-t" style="border-color: var(--border-color);">
+                         <div class="lang-selector flex space-x-3 mb-4">
+                             <img src="https://flagcdn.com/br.svg" width="24" alt="Português" class="lang-btn" data-lang="pt">
+                             <img src="https://flagcdn.com/us.svg" width="24" alt="English" class="lang-btn" data-lang="en">
+                             <img src="https://flagcdn.com/es.svg" width="24" alt="Español" class="lang-btn" data-lang="es">
+                         </div>
+                         <p id="current-time-desktop" class="text-xs" style="color: var(--sidebar-text-secondary);"></p>
+                    </div>
+                </nav>
+            </div>
+        </aside>
+
+        <!-- Mobile Menu (Off-canvas) -->
+        <aside id="mobile-menu" class="md:hidden fixed top-0 left-0 w-full h-full z-50 transform -translate-x-full p-8 flex flex-col justify-between" style="background-color: var(--sidebar-background);">
+            <div>
+                <div class="flex justify-between items-center mb-12">
+                    <h1 class="text-2xl font-bold" style="color: var(--sidebar-text-primary);">Mateus Correia</h1>
+                    <button id="close-menu-btn" class="p-2" style="color: var(--sidebar-text-primary);">
+                        <i class="fas fa-times fa-lg"></i>
+                    </button>
+                </div>
+                <nav>
+                    <ul class="space-y-6 text-xl" id="nav-links-mobile" style="color: var(--sidebar-text-secondary);">
+                        <li><a href="#home" class="nav-link-mobile" data-translate-key="nav_home">Início</a></li>
+                        <li><a href="#sobre" class="nav-link-mobile" data-translate-key="nav_about">Sobre Mim</a></li>
+                        <li><a href="#visao" class="nav-link-mobile" data-translate-key="nav_vision">Visão</a></li>
+                        <li><a href="#futuro" class="nav-link-mobile" data-translate-key="nav_future">Futuro</a></li>
+                        <li><a href="#experiencia" class="nav-link-mobile" data-translate-key="nav_experience">Experiência</a></li>
+                        <li><a href="#projetos" class="nav-link-mobile" data-translate-key="nav_projects">Projetos</a></li>
+                        <li><a href="#contato" class="nav-link-mobile" data-translate-key="nav_contact">Contato</a></li>
+                        <li><a href="https://drive.google.com/file/d/1UCAcHe7RjsXDvnneBDcSrfia1TdRjaoO/view?usp=sharing" target="_blank" class="nav-link-mobile" data-translate-key="nav_cv">Meu CV <i class="fas fa-download fa-xs ml-1"></i></a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="mt-12 pt-8 border-t" style="border-color: var(--border-color);">
+                <div class="lang-selector flex space-x-3 mb-4">
+                    <img src="https://flagcdn.com/br.svg" width="24" alt="Português" class="lang-btn" data-lang="pt">
+                    <img src="https://flagcdn.com/us.svg" width="24" alt="English" class="lang-btn" data-lang="en">
+                    <img src="https://flagcdn.com/es.svg" width="24" alt="Español" class="lang-btn" data-lang="es">
+                </div>
+                 <p id="current-time-mobile" class="text-xs" style="color: var(--sidebar-text-secondary);"></p>
+            </div>
+        </aside>
+
+        <!-- === RIGHT SIDE (MAIN CONTENT) === -->
+        <main class="w-full h-screen overflow-y-auto main-content relative">
+            <div id="scroll-progress"></div>
+            
+            <div class="max-w-4xl mx-auto p-6 md:px-16 relative z-10">
+                <!-- HOME SECTION -->
+                <section id="home" class="min-h-screen flex flex-col justify-center items-start">
+                    <img src="https://i.imgur.com/xlFe7vd.jpeg" alt="Foto de Mateus Correia" class="w-32 h-32 rounded-full mb-8 shadow-xl border-4 border-white object-cover scroll-animate">
+                    <h2 class="text-4xl md:text-5xl font-bold leading-tight scroll-animate min-h-[100px] md:min-h-[128px]" style="transition-delay: 100ms;">
+                        <span data-translate-key="home_title_prefix">Mateus Correia é um</span>
+                        <br class="hidden md:block">
+                        <span id="typing-text" class="text-blue-600"></span><span class="typing-cursor"></span>
+                    </h2>
+                    <p class="mt-4 text-xl scroll-animate" style="transition-delay: 200ms;" data-translate-key="home_subtitle">Sua expertise conecta Engenharia Biomédica e Visão Computacional para criar aplicações robustas e inovadoras que resolvem desafios complexos na área da saúde.</p>
+                    <a href="#sobre" class="group mt-8 text-white font-medium px-8 py-3 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-px scroll-animate flex items-center gap-3" style="transition-delay: 300ms; background-color: var(--blue-primary);" onmouseover="this.style.backgroundColor='var(--blue-hover)'" onmouseout="this.style.backgroundColor='var(--blue-primary)'" data-translate-key="home_button">
+                        Conheça-me <i class="fas fa-arrow-right transition-transform duration-300 group-hover:translate-x-1"></i>
+                    </a>
+                </section>
+
+                <!-- ABOUT / TERMINAL-STYLE SECTION -->
+                <section id="sobre" class="py-24 md:py-32">
+                    <h3 class="text-3xl md:text-4xl font-bold scroll-animate flex items-center gap-3" data-translate-key="about_title"><i class="fas fa-terminal text-amber-500"></i> Sobre Mim</h3>
+                    <div class="section-divider scroll-animate w-20" style="background-color: var(--yellow-accent);"></div>
+                    <div class="terminal-window-card scroll-animate">
+                        <div class="terminal-header">
+                            <div class="terminal-btn bg-red-500"></div>
+                            <div class="terminal-btn bg-yellow-500"></div>
+                            <div class="terminal-btn bg-green-500"></div>
+                        </div>
+                        <div id="terminal-static">
+                            <div class="terminal-output">
+                                <span class="terminal-prompt">mateus@portfolio:~$</span> whoami <div class="terminal-cursor-static ml-2"></div>
+                            </div>
+                            <div class="terminal-output mt-4 pl-2 text-lg" data-translate-key="about_p1_terminal">
+                                <!-- Content injected by JS -->
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- VISION SECTION (INTERACTIVE SYNERGY ANIMATION) -->
+                <section id="visao" class="py-24 md:py-32">
+                    <h3 class="text-3xl md:text-4xl font-bold scroll-animate flex items-center gap-3" data-translate-key="vision_title"><i class="fas fa-brain text-blue-600"></i> A Sinergia: Saúde & Tecnologia</h3>
+                    <div class="section-divider scroll-animate w-20 bg-blue-600"></div>
+                    <p class="text-lg leading-relaxed scroll-animate mb-8" data-translate-key="vision_subtitle"><!-- Text updated by JS --></p>
+                    <div id="synergy-container" class="scroll-animate">
+                        <!-- Interactive Synergy Animation will be built here -->
+                    </div>
+                </section>
+
+                <!-- FUTURE PLANS SECTION -->
+                <section id="futuro" class="py-24 md:py-32">
+                    <h3 class="text-3xl md:text-4xl font-bold scroll-animate flex items-center gap-3" data-translate-key="future_title"><i class="fas fa-rocket text-amber-500"></i> Planos Futuros</h3>
+                    <div class="section-divider scroll-animate w-20" style="background-color: var(--yellow-accent);"></div>
+                    <div class="section-card scroll-animate">
+                        <h4 class="text-xl font-bold" data-translate-key="future_subtitle">Aprofundamento em Computação Quântica</h4>
+                        <p class="mt-4 text-lg" data-translate-key="future_desc">A busca pelo conhecimento é contínua. Meu próximo grande passo é uma pós-graduação em Computação Quântica, explorando como seus princípios podem revolucionar a modelagem de sistemas biológicos e o desenvolvimento de novos fármacos, levando a medicina a uma nova fronteira.</p>
+                    </div>
+                </section>
+
+                <!-- Experience, Projects, Contact Sections -->
+                <section id="experiencia" class="py-24 md:py-32">
+                     <h3 class="text-3xl md:text-4xl font-bold scroll-animate flex items-center gap-3" data-translate-key="experience_title"><i class="fa-solid fa-briefcase text-blue-600"></i>Experiência</h3>
+                    <div class="section-divider scroll-animate w-20 bg-blue-600"></div>
+                     <div class="w-full space-y-8">
+                         <div class="section-card scroll-animate"><h4 class="text-xl font-bold" data-translate-key="exp1_title">Instrutor de Nível Superior em IA e Cyber Segurança</h4><p class="text-md font-medium text-slate-500" data-translate-key="exp1_company">Organização das Voluntárias de Goiás (OVG) <span class="text-sm ml-2">(6 meses - Presente)</span></p><p class="mt-4 text-lg" data-translate-key="exp1_desc">Atuando no Centro da Juventude “Tecendo o Futuro”, lidero iniciativas tecnológicas e coordeno ações para a formação de jovens em competências digitais e inovação, capacitando a próxima geração de talentos.</p></div>
+                         <div class="section-card scroll-animate"><h4 class="text-xl font-bold" data-translate-key="exp2_title">Desenvolvedor de Projetos de Visão Computacional</h4><p class="text-md font-medium text-slate-500" data-translate-key="exp2_company">Eventos de Grande Porte <span class="text-sm ml-2">(2 Anos)</span></p><p class="mt-4 text-lg" data-translate-key="exp2_desc">Produzi soluções de visão computacional escaláveis para eventos de massa, como na edição do Totus Tuus no estádio Serra Dourada, atendendo um público de mais de 60 mil pessoas e garantindo performance e confiabilidade.</p></div>
+                         <div class="section-card scroll-animate"><h4 class="text-xl font-bold" data-translate-key="exp3_title">Desenvolvedor de Projetos de Tecnologia</h4><p class="text-md font-medium text-slate-500" data-translate-key="exp3_company">Paróquia Nossa Senhora da Assunção <span class="text-sm ml-2">(5 Anos)</span></p><p class="mt-4 text-lg" data-translate-key="exp3_desc">Desenvolvi e implementei múltiplos projetos para uma instituição de grande visibilidade e demanda, incluindo totens interativos e sistemas autônomos para transmissão ao vivo, otimizando a comunicação e o alcance.</p></div>
+                    </div>
+                </section>
+                 <section id="projetos" class="py-24 md:py-32">
+                    <h3 class="text-3xl md:text-4xl font-bold scroll-animate flex items-center gap-3" data-translate-key="projects_title"><i class="fa-solid fa-code text-amber-500"></i>Projetos</h3>
+                    <div class="section-divider scroll-animate w-20" style="background-color: var(--yellow-accent);"></div>
+                    <div class="w-full space-y-8">
+                        <div class="section-card scroll-animate"><h4 class="text-xl font-bold" data-translate-key="proj1_title">Projeto de Engenharia Biomédica</h4><p class="text-md font-medium text-slate-500" data-translate-key="proj1_company">Colaboração com estudantes de IA (INF - UFG)</p><p class="mt-4 text-lg" data-translate-key="proj1_desc">Atualmente em fase inicial, este projeto visa criar uma solução de hardware e software inovadora na intersecção da saúde e tecnologia, com foco na aquisição e análise inteligente de sinais biológicos.</p></div>
+                        <div class="section-card scroll-animate"><h4 class="text-xl font-bold" data-translate-key="proj2_title">Pesquisa Interdisciplinar Internacional</h4><p class="text-md font-medium text-slate-500" data-translate-key="proj2_company">Parceria UFG & Museu de História Natural da França</p><p class="mt-4 text-lg" data-translate-key="proj2_desc">Convidado a integrar um projeto de alto impacto vinculado ao Programa de Pós-Graduação em Farmácia da UFG, aplicando tecnologia para resolver desafios complexos no campo da saúde em um contexto global.</p></div>
+                    </div>
+                </section>
+                <section id="contato" class="py-24 md:py-32">
+                    <h3 class="text-3xl md:text-4xl font-bold scroll-animate flex items-center gap-3" data-translate-key="contact_title"><i class="fa-solid fa-inbox text-blue-600"></i>Entre em Contato</h3>
+                    <div class="section-divider scroll-animate w-20 bg-blue-600"></div>
+                    <p class="text-lg mb-8 scroll-animate" data-translate-key="contact_subtitle">Vamos nos conectar! Sinta-se à vontade para me contatar por qualquer um destes canais.</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
+                        <a href="https://www.linkedin.com/in/mateusalexandregamacorreia/" target="_blank" class="section-card flex items-center p-4 rounded-lg transition-all duration-300 scroll-animate"><i class="fab fa-linkedin fa-2x text-blue-600"></i><div class="ml-4 break-words"><p class="font-semibold">LinkedIn</p><p class="text-slate-500">/in/mateusalexandregamacorreia</p></div></a>
+                        <a href="https://github.com/icbmmateus16" target="_blank" class="section-card flex items-center p-4 rounded-lg transition-all duration-300 scroll-animate"><i class="fab fa-github fa-2x"></i><div class="ml-4"><p class="font-semibold">GitHub</p><p class="text-slate-500">@icbmmateus16</p></div></a>
+                        <a href="http://lattes.cnpq.br/9643377843478903" target="_blank" class="section-card flex items-center p-4 rounded-lg transition-all duration-300 scroll-animate"><i class="fas fa-graduation-cap fa-2x text-amber-600"></i><div class="ml-4"><p class="font-semibold">Lattes</p><p class="text-slate-500" data-translate-key="contact_lattes">Currículo Acadêmico</p></div></a>
+                        <a href="mailto:icbmmateus@gmail.com" class="section-card flex items-center p-4 rounded-lg transition-all duration-300 scroll-animate"><i class="fas fa-envelope fa-2x text-red-500"></i><div class="ml-4"><p class="font-semibold">Email</p><p class="text-slate-500">icbmmateus@gmail.com</p></div></a>
+                    </div>
+                </section>
+                 <footer class="text-center mt-12 py-8 border-t" style="border-color: var(--border-color);">
+                     <p class="text-sm" style="color: var(--text-secondary);" data-translate-key="footer_text">Criado por Mateus Correia</p>
+                 </footer>
+            </div>
+        </main>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const translations = {
+            pt: {
+                nav_home: "Início", nav_about: "Sobre Mim", nav_vision: "Visão", nav_future: "Futuro", nav_experience: "Experiência", nav_projects: "Projetos", nav_contact: "Contato", nav_cv: "Meu CV",
+                home_title_prefix: "Mateus Correia é um",
+                typing_words: ["Especialista em IA.", "Cientista de Dados.", "Pesquisador Biomédico."],
+                home_subtitle: "Sua expertise conecta Engenharia Biomédica e Visão Computacional para criar aplicações robustas e inovadoras que resolvem desafios complexos na área da saúde.",
+                home_button: "Conheça-me",
+                about_title: "<i class='fas fa-terminal text-amber-500'></i> Sobre Mim",
+                about_p1_terminal: "Com uma base sólida em <span class='terminal-keyword'>Biomedicina (UFG)</span> e especialização em <span class='terminal-keyword'>Inteligência Artificial & Big Data (UTFPR)</span>, minha carreira é dedicada a construir pontes entre a saúde e a tecnologia. Tenho expertise avançada em <span class='terminal-keyword'>Python</span> e <span class='terminal-keyword'>R</span> para análise de dados, e vasta experiência aplicando <span class='terminal-keyword'>Machine Learning</span>, <span class='terminal-keyword'>Redes Neurais</span> e <span class='terminal-keyword'>Metaheurísticas</span> para criar soluções eficientes. Minha trajetória inclui desde a <span class='terminal-keyword'>liderança de equipes</span> em projetos de <span class='terminal-keyword'>inovação</span> até a integração de <span class='terminal-keyword'>hardware</span>, sempre com o objetivo de transformar dados complexos em avanços para a saúde.",
+                vision_title: "<i class='fas fa-brain text-blue-600'></i> A Sinergia: Saúde & Tecnologia",
+                vision_subtitle: "A minha jornada começou na saúde, com pesquisas em neurociência. Foi lá que a faísca acendeu: e se pudéssemos replicar o cérebro artificialmente? Essa pergunta uniu os meus dois mundos. Hoje, aplico meu conhecimento para criar sistemas de IA que resolvem problemas complexos em diversas áreas, com um foco especial e apaixonado pelo setor da saúde.",
+                vision_button_text: "<i class='fas fa-bolt mr-2'></i> Ver a Sinergia",
+                vision_sphere_health: "Saúde",
+                vision_sphere_tech: "Tecnologia",
+                vision_innovation: "INOVAÇÃO",
+                future_title: "<i class='fas fa-rocket text-amber-500'></i> Planos Futuros",
+                future_subtitle: "Aprofundamento em Computação Quântica",
+                future_desc: "A busca pelo conhecimento é contínua. Meu próximo grande passo é uma pós-graduação em Computação Quântica, explorando como seus princípios podem revolucionar a modelagem de sistemas biológicos e o desenvolvimento de novos fármacos, levando a medicina a uma nova fronteira.",
+                experience_title: "<i class='fa-solid fa-briefcase text-blue-600'></i>Experiência",
+                exp1_title: "Instrutor de Nível Superior em IA e Cyber Segurança",
+                exp1_company: "Organização das Voluntárias de Goiás (OVG)",
+                exp1_desc: "Atuando no Centro da Juventude “Tecendo o Futuro”, lidero iniciativas tecnológicas e coordeno ações para a formação de jovens em competências digitais e inovação, capacitando a próxima geração de talentos.",
+                exp2_title: "Desenvolvedor de Projetos de Visão Computacional",
+                exp2_company: "Eventos de Grande Porte",
+                exp2_desc: "Produzi soluções de visão computacional escaláveis para eventos de massa, como na edição do Totus Tuus no estádio Serra Dourada, atendendo um público de mais de 60 mil pessoas e garantindo performance e confiabilidade.",
+                exp3_title: "Desenvolvedor de Projetos de Tecnologia",
+                exp3_company: "Paróquia Nossa Senhora da Assunção",
+                exp3_desc: "Desenvolvi e implementei múltiplos projetos para uma instituição de grande visibilidade e demanda, incluindo totens interativos e sistemas autônomos para transmissão ao vivo, otimizando a comunicação e o alcance.",
+                projects_title: "<i class='fa-solid fa-code text-amber-500'></i>Projetos",
+                proj1_title: "Projeto de Engenharia Biomédica",
+                proj1_company: "Colaboração com estudantes de IA (INF - UFG)",
+                proj1_desc: "Atualmente em fase inicial, este projeto visa criar uma solução de hardware e software inovadora na intersecção da saúde e tecnologia, com foco na aquisição e análise inteligente de sinais biológicos.",
+                proj2_title: "Pesquisa Interdisciplinar Internacional",
+                proj2_company: "Parceria UFG & Museu de História Natural da França",
+                proj2_desc: "Convidado a integrar um projeto de alto impacto vinculado ao Programa de Pós-Graduação em Farmácia da UFG, aplicando tecnologia para resolver desafios complexos no campo da saúde em um contexto global.",
+                contact_title: "<i class='fa-solid fa-inbox text-blue-600'></i>Entre em Contato",
+                contact_subtitle: "Vamos nos conectar! Sinta-se à vontade para me contatar por qualquer um destes canais.",
+                contact_lattes: "Currículo Acadêmico",
+                footer_text: "Criado por Mateus Correia"
+            },
+            en: {
+                nav_home: "Home", nav_about: "About Me", nav_vision: "Vision", nav_future: "Future", nav_experience: "Experience", nav_projects: "Projects", nav_contact: "Contact", nav_cv: "My Resume",
+                home_title_prefix: "Mateus Correia is an",
+                typing_words: ["AI Specialist.", "Data Scientist.", "Biomedical Researcher."],
+                home_subtitle: "His expertise connects Biomedical Engineering and Computer Vision to create robust and innovative applications that solve complex challenges in healthcare.",
+                home_button: "Get to Know Me",
+                about_title: "<i class='fas fa-terminal text-amber-500'></i> About Me",
+                about_p1_terminal: "With a solid foundation in <span class='terminal-keyword'>Biomedicine (UFG)</span> and a specialization in <span class='terminal-keyword'>Artificial Intelligence & Big Data (UTFPR)</span>, my career is dedicated to building bridges between health and technology. I have advanced expertise in <span class='terminal-keyword'>Python</span> and <span class='terminal-keyword'>R</span> for data analysis, and vast experience applying <span class='terminal-keyword'>Machine Learning</span>, <span class='terminal-keyword'>Neural Networks</span>, and <span class='terminal-keyword'>Metaheuristics</span> to create efficient solutions. My journey includes everything from <span class='terminal-keyword'>leading teams</span> in <span class='terminal-keyword'>innovation</span> projects to <span class='terminal-keyword'>hardware</span> integration, always aiming to transform complex data into healthcare advancements.",
+                vision_title: "<i class='fas fa-brain text-blue-600'></i> The Synergy: Health & Technology",
+                vision_subtitle: "My journey began in healthcare, with research in neuroscience. That's where the spark was lit: what if we could replicate the brain artificially? This question united my two worlds. Today, I apply my knowledge to create AI systems that solve complex problems in various fields, with a special and passionate focus on the healthcare sector.",
+                vision_button_text: "<i class='fas fa-bolt mr-2'></i> See the Synergy",
+                vision_sphere_health: "Health",
+                vision_sphere_tech: "Tech",
+                vision_innovation: "INNOVATION",
+                future_title: "<i class='fas fa-rocket text-amber-500'></i> Future Plans",
+                future_subtitle: "Deepening Knowledge in Quantum Computing",
+                future_desc: "The pursuit of knowledge is continuous. My next big step is a postgraduate degree in Quantum Computing, exploring how its principles can revolutionize the modeling of biological systems and the development of new drugs, taking medicine to a new frontier.",
+                experience_title: "<i class='fa-solid fa-briefcase text-blue-600'></i>Experience",
+                exp1_title: "Higher Education Instructor in AI and Cyber Security",
+                exp1_company: "Organization of Volunteers of Goiás (OVG)",
+                exp1_desc: "Working at the 'Tecendo o Futuro' Youth Center, I lead technological initiatives and coordinate actions to train young people in digital skills and innovation, empowering the next generation of talent.",
+                exp2_title: "Computer Vision Project Developer",
+                exp2_company: "Large-Scale Events",
+                exp2_desc: "I produced scalable computer vision solutions for mass events, such as the Totus Tuus edition at the Serra Dourada stadium, serving an audience of over 60,000 people and ensuring performance and reliability.",
+                exp3_title: "Technology Project Developer",
+                exp3_company: "Nossa Senhora da Assunção Parish",
+                exp3_desc: "I developed and implemented multiple projects for an institution with high visibility and demand, including interactive totems and autonomous systems for live broadcasting, optimizing communication and reach.",
+                projects_title: "<i class='fa-solid fa-code text-amber-500'></i>Projects",
+                proj1_title: "Biomedical Engineering Project",
+                proj1_company: "Collaboration with AI students (INF - UFG)",
+                proj1_desc: "Currently in its initial phase, this project aims to create an innovative hardware and software solution at the intersection of health and technology, focusing on the intelligent acquisition and analysis of biological signals.",
+                proj2_title: "International Interdisciplinary Research",
+                proj2_company: "Partnership UFG & Natural History Museum of France",
+                proj2_desc: "Invited to join a high-impact project linked to the UFG's Postgraduate Program in Pharmacy, applying technology to solve complex challenges in the health field in a global context.",
+                contact_title: "<i class='fa-solid fa-inbox text-blue-600'></i>Get in Touch",
+                contact_subtitle: "Let's connect! Feel free to contact me through any of these channels.",
+                contact_lattes: "Academic Curriculum",
+                footer_text: "Created by Mateus Correia"
+            },
+            es: {
+                nav_home: "Inicio", nav_about: "Sobre Mí", nav_vision: "Visión", nav_future: "Futuro", nav_experience: "Experiencia", nav_projects: "Proyectos", nav_contact: "Contacto", nav_cv: "Mi CV",
+                home_title_prefix: "Mateus Correia es un",
+                typing_words: ["Especialista en IA.", "Científico de Datos.", "Investigador Biomédico."],
+                home_subtitle: "Su experiencia conecta la Ingeniería Biomédica y la Visión por Computadora para crear aplicaciones robustas e innovadoras que resuelven desafíos complejos en el área de la salud.",
+                home_button: "Conóceme",
+                about_title: "<i class='fas fa-terminal text-amber-500'></i> Sobre Mí",
+                about_p1_terminal: "Con una base sólida en <span class='terminal-keyword'>Biomedicina (UFG)</span> y una especialización en <span class='terminal-keyword'>Inteligencia Artificial & Big Data (UTFPR)</span>, mi carrera se dedica a construir puentes entre la salud y la tecnología. Tengo experiencia avanzada en <span class='terminal-keyword'>Python</span> y <span class='terminal-keyword'>R</span> para análisis de datos, y una vasta experiencia aplicando <span class='terminal-keyword'>Machine Learning</span>, <span class='terminal-keyword'>Redes Neuronales</span> y <span class='terminal-keyword'>Metaheurísticas</span> para crear soluciones eficientes. Mi trayectoria incluye desde el <span class='terminal-keyword'>liderazgo de equipos</span> en proyectos de <span class='terminal-keyword'>innovación</span> hasta la integración de <span class='terminal-keyword'>hardware</span>, siempre con el objetivo de transformar datos complejos en avances para la salud.",
+                vision_title: "<i class='fas fa-brain text-blue-600'></i> La Sinergia: Salud & Tecnología",
+                vision_subtitle: "Mi viaje comenzó en la salud, con investigaciones en neurociencia. Fue allí donde se encendió la chispa: ¿y si pudiéramos replicar el cerebro artificialmente? Esta pregunta unió mis dos mundos. Hoy, aplico mi conocimiento para crear sistemas de IA que resuelven problemas complejos en diversas áreas, con un enfoque especial y apasionado en el sector de la salud.",
+                vision_button_text: "<i class='fas fa-bolt mr-2'></i> Ver la Sinergia",
+                vision_sphere_health: "Salud",
+                vision_sphere_tech: "Tecnología",
+                vision_innovation: "INNOVACIÓN",
+                future_title: "<i class='fas fa-rocket text-amber-500'></i> Planes Futuros",
+                future_subtitle: "Profundización en Computación Cuántica",
+                future_desc: "La búsqueda del conocimiento es continua. Mi próximo gran paso es un posgrado en Computación Cuántica, explorando cómo sus principios pueden revolucionar el modelado de sistemas biológicos y el desarrollo de nuevos fármacos, llevando la medicina a una nueva frontera.",
+                experience_title: "<i class='fa-solid fa-briefcase text-blue-600'></i>Experiencia",
+                exp1_title: "Instructor de Nivel Superior en IA y Ciberseguridad",
+                exp1_company: "Organización de Voluntarios de Goiás (OVG)",
+                exp1_desc: "Trabajando en el Centro Juvenil 'Tecendo o Futuro', lidero iniciativas tecnológicas y coordino acciones para capacitar a jóvenes en competencias digitales e innovación, empoderando a la próxima generación de talentos.",
+                exp2_title: "Desarrollador de Proyectos de Visión por Computadora",
+                exp2_company: "Eventos a Gran Escala",
+                exp2_desc: "Produje soluciones escalables de visión por computadora para eventos masivos, como en la edición de Totus Tuus en el estadio Serra Dourada, atendiendo a una audiencia de más de 60,000 personas y garantizando rendimiento y confiabilidad.",
+                exp3_title: "Desarrollador de Proyectos de Tecnología",
+                exp3_company: "Parroquia Nossa Senhora da Assunção",
+                exp3_desc: "Desarrollé e implementé múltiples proyectos para una institución de gran visibilidad y demanda, incluyendo tótems interactivos y sistemas autónomos para transmisiones en vivo, optimizando la comunicación y el alcance.",
+                projects_title: "<i class='fa-solid fa-code text-amber-500'></i>Proyectos",
+                proj1_title: "Proyecto de Ingeniería Biomédica",
+                proj1_company: "Colaboración con estudiantes de IA (INF - UFG)",
+                proj1_desc: "Actualmente en su fase inicial, este proyecto busca crear una solución innovadora de hardware y software en la intersección de la salud y la tecnología, centrándose en la adquisición y análisis inteligente de señales biológicas.",
+                proj2_title: "Investigación Interdisciplinaria Internacional",
+                proj2_company: "Asociación UFG & Museo de Historia Natural de Francia",
+                proj2_desc: "Invitado a unirme a un proyecto de alto impacto vinculado al Programa de Posgrado en Farmacia de la UFG, aplicando tecnología para resolver desafíos complejos en el campo de la salud en un contexto global.",
+                contact_title: "<i class='fa-solid fa-inbox text-blue-600'></i>Contacto",
+                contact_subtitle: "¡Conectemos! No dudes en contactarme a través de cualquiera de estos canales.",
+                contact_lattes: "Currículum Académico",
+                footer_text: "Creado por Mateus Correia"
+            }
+        };
+        let currentLang = localStorage.getItem('language') || 'pt';
+        let words = [];
+        let typeTimeout;
+        const htmlEl = document.documentElement;
+        
+        const setLanguage = (lang) => {
+            if (!translations[lang]) lang = 'pt';
+            currentLang = lang;
+            localStorage.setItem('language', lang);
+            words = translations[lang].typing_words;
+
+            document.querySelectorAll('[data-translate-key]').forEach(el => {
+                const key = el.getAttribute('data-translate-key');
+                if (translations[lang][key]) {
+                    if (key === 'home_title_prefix') {
+                        el.childNodes[0].nodeValue = translations[lang][key] + ' ';
+                    } else {
+                        el.innerHTML = translations[lang][key];
+                    }
+                }
+            });
+            document.documentElement.lang = lang;
+            wordIndex = 0; charIndex = 0; isDeleting = false;
+            
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.getAttribute('data-lang') === lang) btn.classList.add('active');
+            });
+            initSynergyAnimation();
+        };
+
+        let synergyAnimationId;
+        const initSynergyAnimation = () => {
+            const container = document.getElementById('synergy-container');
+            if (!container) return;
+            
+            if (synergyAnimationId) cancelAnimationFrame(synergyAnimationId);
+            container.innerHTML = `
+                <canvas id="synergy-canvas"></canvas>
+                <div id="health-sphere" class="sphere">${translations[currentLang]?.vision_sphere_health || 'Health'}</div>
+                <div id="tech-sphere" class="sphere">${translations[currentLang]?.vision_sphere_tech || 'Tech'}</div>
+                <div id="innovation-word">${translations[currentLang]?.vision_innovation || 'INNOVATION'}</div>
+                <button id="synergy-trigger">${translations[currentLang]?.vision_button_text || 'See Synergy'}</button>
+            `;
+            
+            const trigger = document.getElementById('synergy-trigger');
+            trigger.addEventListener('click', () => {
+                trigger.classList.add('hidden');
+                container.classList.add('connected');
+                setTimeout(() => container.classList.add('word-visible'), 1200);
+                runConnectionAnimation();
+            }, { once: true });
+        };
+
+        const runConnectionAnimation = () => {
+            const canvas = document.getElementById('synergy-canvas');
+            const ctx = canvas.getContext('2d');
+            const container = canvas.parentElement;
+            
+            let width = container.clientWidth;
+            let height = container.clientHeight;
+            canvas.width = width;
+            canvas.height = height;
+
+            const healthSphere = { x: width * 0.15, y: height / 2 };
+            const techSphere = { x: width * 0.85, y: height / 2 };
+            const center = { x: width / 2, y: height / 2 };
+
+            let particles = [];
+            
+            function Particle(x, y, color, isConnection) {
+                this.x = x;
+                this.y = y;
+                this.size = Math.random() * 2.5 + 1;
+                this.life = 1;
+                this.decay = isConnection ? 0.015 : 0.04;
+                this.color = color;
+
+                if (isConnection) {
+                    this.destX = center.x;
+                    this.destY = center.y;
+                    this.speed = Math.random() * 0.04 + 0.02;
+                } else {
+                    this.destX = techSphere.x;
+                    this.destY = techSphere.y;
+                    this.speed = Math.random() * 2 + 1;
+                }
+            }
+            Particle.prototype.update = function() {
+                let dx = this.destX - this.x;
+                let dy = this.destY - this.y;
+                let dist = Math.sqrt(dx * dx + dy * dy);
+                
+                if (dist > 1) {
+                    this.x += dx / dist * this.speed;
+                    this.y += dy / dist * this.speed;
+                }
+                
+                this.life -= this.decay;
+            };
+            Particle.prototype.draw = function() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(${this.color}, ${this.life})`;
+                ctx.fill();
+            };
+
+            function createInitialBurst() {
+                for (let i = 0; i < 50; i++) {
+                    setTimeout(() => {
+                        particles.push(new Particle(healthSphere.x, healthSphere.y, '251, 188, 4', true)); // Yellow
+                        particles.push(new Particle(techSphere.x, techSphere.y, '59, 130, 246', true)); // Blue
+                    }, i * 20);
+                }
+            }
+
+            function animate() {
+                ctx.clearRect(0, 0, width, height);
+                
+                if (container.classList.contains('connected') && Math.random() > 0.85) {
+                    particles.push(new Particle(healthSphere.x, healthSphere.y, Math.random() > 0.5 ? '251, 188, 4' : '59, 130, 246', false));
+                }
+                
+                particles.forEach((p, index) => {
+                    p.update();
+                    p.draw();
+                    if (p.life <= 0) { particles.splice(index, 1); }
+                });
+
+                if (container.classList.contains('connected')) {
+                     for(let i = 0; i < 3; i++) {
+                        ctx.beginPath();
+                        ctx.moveTo(healthSphere.x, healthSphere.y);
+                        ctx.bezierCurveTo(width*0.4, height*0.5 + (Math.random()-0.5)*60, width*0.6, height*0.5 + (Math.random()-0.5)*60, techSphere.x, techSphere.y);
+                        ctx.strokeStyle = `rgba(138, 180, 248, 0.15)`;
+                        ctx.lineWidth = 1.5;
+                        ctx.stroke();
+                    }
+                }
+                
+                synergyAnimationId = requestAnimationFrame(animate);
+            }
+            
+            createInitialBurst();
+            animate();
+        }
+        
+        let wordIndex = 0, charIndex = 0, isDeleting = false;
+        const type = () => {
+            if (typeTimeout) clearTimeout(typeTimeout);
+            if (!words || words.length === 0) return;
+            const typingElement = document.getElementById("typing-text");
+            const currentWord = words[wordIndex];
+            let textToShow = isDeleting ? currentWord.substring(0, charIndex - 1) : currentWord.substring(0, charIndex + 1);
+            if (typingElement) typingElement.innerHTML = textToShow;
+            charIndex = isDeleting ? charIndex - 1 : charIndex + 1;
+            let typeSpeed = isDeleting ? 75 : 150;
+            if (!isDeleting && charIndex === currentWord.length) {
+                typeSpeed = 2000; isDeleting = true;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false; wordIndex = (wordIndex + 1) % words.length; typeSpeed = 500;
+            }
+            typeTimeout = setTimeout(type, typeSpeed);
+        };
+        
+        particlesJS('particles-js', { "particles": { "number": { "value": 100, "density": { "enable": true, "value_area": 800 } }, "color": { "value": "#cccccc" }, "shape": { "type": "circle" }, "opacity": { "value": 0.5, "random": true }, "size": { "value": 2.5, "random": true }, "line_linked": { "enable": true, "distance": 120, "color": "#cccccc", "opacity": 0.4, "width": 1 }, "move": { "enable": true, "speed": 1.5, "direction": "none", "random": true, "straight": false, "out_mode": "out", "bounce": false } }, "interactivity": { "detect_on": "canvas", "events": { "onhover": { "enable": true, "mode": "grab" }, "onclick": { "enable": false } } }, "retina_detect": true });
+        
+        const updateTime=()=>{const e=document.getElementById("current-time-desktop"),t=document.getElementById("current-time-mobile");if(e&&t){const n=new Date,o=(new Intl.DateTimeFormat(currentLang,{timeZone:"America/Sao_Paulo",hour:"2-digit",minute:"2-digit"})).format(n),a=(new Intl.DateTimeFormat(currentLang,{timeZone:"America/Sao_Paulo",weekday:"long",day:"2-digit",month:"long"})).format(n);const l=`${a}<br>${o} (Goiânia)`;e.innerHTML=l,t.innerHTML=l}};setInterval(updateTime,1e3);updateTime();
+        
+        const hamburgerBtn=document.getElementById("hamburger-btn"),closeMenuBtn=document.getElementById("close-menu-btn"),mobileMenu=document.getElementById("mobile-menu"),mobileNavLinks=document.querySelectorAll(".nav-link-mobile"),closeMenu=()=>{mobileMenu.classList.add("-translate-x-full")};hamburgerBtn.addEventListener("click",()=>{mobileMenu.classList.remove("-translate-x-full")}),closeMenuBtn.addEventListener("click",closeMenu),mobileNavLinks.forEach(e=>{e.addEventListener("click",closeMenu)});
+        
+        const cursor=document.querySelector(".cursor");window.addEventListener("mousemove",e=>{cursor.style.transform=`translate(${e.clientX}px, ${e.clientY}px)`});document.body.addEventListener("mouseover",e=>{e.target.matches("a, button, .lang-btn, input, .sphere")?document.body.classList.add("cursor-hover"):document.body.classList.remove("cursor-hover")});
+        
+        const progressBar=document.getElementById("scroll-progress"),mainContentEl=document.querySelector(".main-content");mainContentEl.addEventListener("scroll",()=>{const e=mainContentEl.scrollHeight-mainContentEl.clientHeight,t=mainContentEl.scrollTop/e*100;progressBar.style.width=`${t}%`});const mainContent=document.querySelector(".main-content"),sections=document.querySelectorAll("main section"),navLinksDesktop=document.querySelectorAll("#nav-links-desktop .nav-link"),observerOptions={root:mainContent,rootMargin:"-40% 0px -60% 0px",threshold:0},sectionObserver=new IntersectionObserver(e=>{e.forEach(e=>{if(e.isIntersecting){const t=e.target.id;navLinksDesktop.forEach(e=>{e.classList.remove("active"),e.getAttribute("href").substring(1)===t&&e.classList.add("active")})}})},observerOptions);sections.forEach(e=>{sectionObserver.observe(e)});const animationObserver=new IntersectionObserver((e,t)=>{e.forEach(e=>{e.isIntersecting&&(e.target.classList.add("visible"),t.unobserve(e.target))})},{threshold:.1});document.querySelectorAll(".scroll-animate").forEach(e=>{animationObserver.observe(e)});
+        
+        document.querySelectorAll(".lang-selector").forEach(selector => {
+            selector.addEventListener('click', (event) => {
+                 const langBtn = event.target.closest('.lang-btn');
+                 if (langBtn) {
+                    const lang = langBtn.getAttribute('data-lang');
+                    if(lang && lang !== currentLang) {
+                        setLanguage(lang);
+                        if (typeTimeout) clearTimeout(typeTimeout);
+                        type();
+                    }
+                 }
+            });
+        });
+
+        // Initial setup calls
+        setLanguage(currentLang);
+        type();
+    });
+</script>
+
+</body>
+</html>
