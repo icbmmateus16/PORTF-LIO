@@ -96,6 +96,16 @@
             opacity: 1;
         }
 
+        /* Hide custom cursor on mobile devices */
+        @media (max-width: 768px) {
+            .cursor {
+                display: none !important;
+            }
+            body, a, button, .lang-btn {
+                cursor: auto;
+            }
+        }
+
         #synergy-container {
             position: relative;
             width: 100%;
