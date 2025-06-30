@@ -206,7 +206,7 @@
             transform: scale(1);
         }
 
-        .terminal-window-card { background-color: var(--card-background); backdrop-filter: blur(10px); border: 1px solid var(--border-color); border-radius: 12px; overflow: hidden; }
+        .terminal-window-card { background-color: var(--card-background); backdrop-filter: blur(10px); border: 1px solid var(--border-color); border-radius: 12px; overflow: hidden; cursor: pointer; }
         .terminal-header { background-color: #e8e8e8; padding: 0.5rem 1rem; display: flex; align-items: center; gap: 0.5rem; }
         .terminal-btn { width: 12px; height: 12px; border-radius: 50%; }
         #terminal-static { font-family: var(--fira-code-font); padding: 1.5rem; }
@@ -214,6 +214,11 @@
         .terminal-keyword { color: var(--yellow-accent); font-weight: 500; }
         .terminal-prompt { color: var(--blue-primary); font-weight: 500; }
         .terminal-cursor-static { display: inline-block; width: 8px; height: 1.2em; background-color: var(--text-secondary); animation: blink 1.2s infinite; }
+        #terminal-prompt-message {
+            color: var(--text-secondary);
+            opacity: 0.7;
+            animation: blink 2s infinite;
+        }
     </style>
 </head>
 <body class="bg-white">
@@ -325,9 +330,8 @@
                             <div class="terminal-output">
                                 <span class="terminal-prompt">mateus@portfolio:~$</span> whoami <div class="terminal-cursor-static ml-2"></div>
                             </div>
-                            <div class="terminal-output mt-4 pl-2 text-lg" data-translate-key="about_p1_terminal">
-                                <!-- Content injected by JS -->
-                            </div>
+                            <div id="terminal-prompt-message" class="mt-4 pl-2 text-lg" data-translate-key="terminal_prompt_message">Clique para executar...</div>
+                            <div id="terminal-content" class="terminal-output mt-4 pl-2 text-lg"></div>
                         </div>
                     </div>
                 </section>
@@ -401,6 +405,7 @@
                 home_button: "Conheça-me",
                 about_title: "<i class='fas fa-terminal text-amber-500'></i> Sobre Mim",
                 about_p1_terminal: "Com uma base sólida em <span class='terminal-keyword'>Biomedicina (UFG)</span> e especialização em <span class='terminal-keyword'>Inteligência Artificial & Big Data (UTFPR)</span>, minha carreira é dedicada a construir pontes entre a ciência e a tecnologia. Tenho experiência aplicando <span class='terminal-keyword'>Python</span>, <span class='terminal-keyword'>R</span>, <span class='terminal-keyword'>Machine Learning</span>, <span class='terminal-keyword'>Redes Neurais</span> e <span class='terminal-keyword'>Metaheurísticas</span> na criação de soluções eficientes. Minha trajetória inclui a liderança de equipes em projetos de inovação e a integração de hardware, sempre com o objetivo de transformar dados complexos em avanços significativos, com especial interesse no setor da saúde.",
+                terminal_prompt_message: "Clique para executar...",
                 vision_title: "<i class='fas fa-brain text-blue-600'></i> A Sinergia: Saúde & Tecnologia",
                 vision_subtitle: "A minha jornada começou na saúde, com pesquisas em neurociência. Foi lá que a faísca acendeu: e se pudéssemos replicar o cérebro artificialmente? Essa pergunta uniu os meus dois mundos. Hoje, aplico meu conhecimento para criar sistemas de IA que resolvem problemas complexos em diversas áreas, com um foco especial e apaixonado pelo setor da saúde.",
                 vision_button_text: "<i class='fas fa-bolt mr-2'></i> Ver a Sinergia",
@@ -440,6 +445,7 @@
                 home_button: "Get to Know Me",
                 about_title: "<i class='fas fa-terminal text-amber-500'></i> About Me",
                 about_p1_terminal: "With a solid foundation in <span class='terminal-keyword'>Biomedicine (UFG)</span> and a specialization in <span class='terminal-keyword'>Artificial Intelligence & Big Data (UTFPR)</span>, my career is dedicated to building bridges between science and technology. I have experience applying <span class='terminal-keyword'>Python</span>, <span class='terminal-keyword'>R</span>, <span class='terminal-keyword'>Machine Learning</span>, <span class='terminal-keyword'>Neural Networks</span>, and <span class='terminal-keyword'>Metaheuristics</span> to create efficient solutions. My journey includes leading teams in innovation projects and hardware integration, always with the goal of transforming complex data into significant advancements, with a special interest in the healthcare sector.",
+                terminal_prompt_message: "Click to run...",
                 vision_title: "<i class='fas fa-brain text-blue-600'></i> The Synergy: Health & Technology",
                 vision_subtitle: "My journey began in healthcare, with research in neuroscience. That's where the spark was lit: what if we could replicate the brain artificially? This question united my two worlds. Today, I apply my knowledge to create AI systems that solve complex problems in various fields, with a special and passionate focus on the healthcare sector.",
                 vision_button_text: "<i class='fas fa-bolt mr-2'></i> See the Synergy",
@@ -479,6 +485,7 @@
                 home_button: "Conóceme",
                 about_title: "<i class='fas fa-terminal text-amber-500'></i> Sobre Mí",
                 about_p1_terminal: "Con una base sólida en <span class='terminal-keyword'>Biomedicina (UFG)</span> y una especialización en <span class='terminal-keyword'>Inteligencia Artificial & Big Data (UTFPR)</span>, mi carrera se dedica a construir puentes entre la ciencia y la tecnología. Tengo experiencia aplicando <span class='terminal-keyword'>Python</span>, <span class='terminal-keyword'>R</span>, <span class='terminal-keyword'>Machine Learning</span>, <span class='terminal-keyword'>Redes Neuronales</span> y <span class='terminal-keyword'>Metaheurísticas</span> en la creación de soluciones eficientes. Mi trayectoria incluye el liderazgo de equipos en proyectos de innovación y la integración de hardware, siempre con el objetivo de transformar datos complejos en avances significativos, con un interés especial en el sector de la salud.",
+                terminal_prompt_message: "Clic para ejecutar...",
                 vision_title: "<i class='fas fa-brain text-blue-600'></i> La Sinergia: Salud & Tecnología",
                 vision_subtitle: "Mi viaje comenzó en la salud, con investigaciones en neurociencia. Fue allí donde se encendió la chispa: ¿y si pudiéramos replicar el cerebro artificialmente? Esta pregunta unió mis dos mundos. Hoy, aplico mi conocimiento para crear sistemas de IA que resuelven problemas complejos en diversas áreas, con un enfoque especial y apasionado en el sector de la salud.",
                 vision_button_text: "<i class='fas fa-bolt mr-2'></i> Ver la Sinergia",
@@ -539,6 +546,7 @@
                 btn.classList.remove('active');
                 if (btn.getAttribute('data-lang') === lang) btn.classList.add('active');
             });
+            initInteractiveTerminal();
             initSynergyAnimation();
         };
 
@@ -676,6 +684,53 @@
             typeTimeout = setTimeout(type, typeSpeed);
         };
         
+        const initInteractiveTerminal = () => {
+            const terminalWindow = document.querySelector('.terminal-window-card');
+            const promptMessage = document.getElementById('terminal-prompt-message');
+            const terminalContent = document.getElementById('terminal-content');
+            
+            terminalContent.innerHTML = '';
+            promptMessage.style.display = 'block';
+
+            const startTerminalAnimation = () => {
+                promptMessage.style.display = 'none';
+                
+                const fullText = translations[currentLang]?.about_p1_terminal || '';
+                const parts = fullText.split(/(<span class='terminal-keyword'>.*?<\/span>)/);
+                let currentHTML = '';
+                let partIndex = 0;
+
+                const typePart = () => {
+                    if (partIndex >= parts.length) return;
+
+                    let part = parts[partIndex];
+                    if (part.startsWith('<span')) {
+                        currentHTML += part;
+                        terminalContent.innerHTML = currentHTML;
+                        partIndex++;
+                        setTimeout(typePart, 50);
+                    } else {
+                        let charIndex = 0;
+                        const typeChar = () => {
+                            if (charIndex < part.length) {
+                                currentHTML += part.charAt(charIndex);
+                                terminalContent.innerHTML = currentHTML;
+                                charIndex++;
+                                setTimeout(typeChar, 20);
+                            } else {
+                                partIndex++;
+                                typePart();
+                            }
+                        };
+                        typeChar();
+                    }
+                };
+                typePart();
+            };
+
+            terminalWindow.addEventListener('click', startTerminalAnimation, { once: true });
+        };
+
         particlesJS('particles-js', { "particles": { "number": { "value": 100, "density": { "enable": true, "value_area": 800 } }, "color": { "value": "#cccccc" }, "shape": { "type": "circle" }, "opacity": { "value": 0.5, "random": true }, "size": { "value": 2.5, "random": true }, "line_linked": { "enable": true, "distance": 120, "color": "#cccccc", "opacity": 0.4, "width": 1 }, "move": { "enable": true, "speed": 1.5, "direction": "none", "random": true, "straight": false, "out_mode": "out", "bounce": false } }, "interactivity": { "detect_on": "canvas", "events": { "onhover": { "enable": true, "mode": "grab" }, "onclick": { "enable": false } } }, "retina_detect": true });
         
         const updateTime=()=>{const e=document.getElementById("current-time-desktop"),t=document.getElementById("current-time-mobile");if(e&&t){const n=new Date,o=(new Intl.DateTimeFormat(currentLang,{timeZone:"America/Sao_Paulo",hour:"2-digit",minute:"2-digit"})).format(n),a=(new Intl.DateTimeFormat(currentLang,{timeZone:"America/Sao_Paulo",weekday:"long",day:"2-digit",month:"long"})).format(n);const l=`${a}<br>${o} (Goiânia)`;e.innerHTML=l,t.innerHTML=l}};setInterval(updateTime,1e3);updateTime();
