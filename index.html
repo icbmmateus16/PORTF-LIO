@@ -96,14 +96,15 @@
             opacity: 1;
         }
 
-        /* Hide custom cursor on mobile devices */
-        @media (max-width: 768px) {
-            .cursor {
-                display: none !important;
-            }
-            body, a, button, .lang-btn {
-                cursor: auto;
-            }
+        /* Hide custom cursor on touch devices */
+        body.touch-device .cursor {
+            display: none !important;
+        }
+        body.touch-device,
+        body.touch-device a,
+        body.touch-device button,
+        body.touch-device .lang-btn {
+            cursor: auto;
         }
 
         #synergy-container {
@@ -691,6 +692,11 @@
         });
 
         // Initial setup calls
+        const isTouchDevice = () => 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+        if (isTouchDevice()) {
+            document.body.classList.add('touch-device');
+        }
+
         setLanguage(currentLang);
         type();
     });
