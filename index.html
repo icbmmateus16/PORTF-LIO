@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfólio de Mateus Correia - Engenharia Biomédica e Inteligência Artificial">
     <title>Mateus Correia | Portfólio</title>
 
     <!-- Google tag (gtag.js) -->
@@ -14,784 +15,1017 @@
       gtag('config', 'G-7LT7ZCT7D2');
     </script>
     
-    <!-- Tailwind CSS via CDN -->
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#1a73e8',
+                        secondary: '#5f6368',
+                        accent: '#fbbc04',
+                        dark: '#202124',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'Fira Code', 'monospace'],
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                }
+            }
+        }
+    </script>
     
-    <!-- Google Fonts: Inter & Fira Code for terminal -->
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Google+Sans+Text:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     
-    <!-- Font Awesome for Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" xintegrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <style>
-        :root {
-            --google-sans-font: 'Google Sans Text', 'Roboto', sans-serif;
-            --fira-code-font: 'Fira Code', monospace;
-            --text-primary: #202124; 
-            --text-secondary: #5f6368; 
-            --blue-primary: #1a73e8; 
-            --blue-hover: #1765cc;
-            --yellow-accent: #fbbc04; 
-            --border-color: #dadce0; 
-            --background-primary: #ffffff;
-            --background-secondary: #f8f9fa; 
-            --card-background: rgba(255, 255, 255, 0.8);
-            --sidebar-background: #202124;
-            --sidebar-text-primary: #e8eaed;
-            --sidebar-text-secondary: #9aa0a6;
+        /* === Custom Styles & Animations === */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #ffffff;
+            color: #202124;
+            overflow-x: hidden;
         }
 
-        html { scroll-behavior: smooth; }
-        body { font-family: var(--google-sans-font); background-color: var(--background-primary); color: var(--text-primary); cursor: none; transition: background-color 0.3s, color 0.3s; }
-        a, button, .lang-btn { cursor: none; }
-        .main-content::-webkit-scrollbar { width: 8px; } 
-        .main-content::-webkit-scrollbar-track { background: transparent; }
-        .main-content::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 4px; }
-        .nav-link { position: relative; transition: all 0.2s ease-in-out; }
-        .nav-link:before { content: ''; position: absolute; left: -1.25rem; top: 50%; transform: translateY(-50%) scaleX(0); width: 4px; height: 24px; background-color: var(--blue-primary); transition: all 0.3s ease; transform-origin: left; border-radius: 2px; }
-        .nav-link:hover, .nav-link.active { color: var(--blue-primary); transform: translateX(4px); }
-        .nav-link:hover:before, .nav-link.active:before { transform: translateY(-50%) scaleX(1); }
-        .scroll-animate { opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease-out, transform 0.5s ease-out; }
-        .scroll-animate.visible { opacity: 1; transform: translateY(0); }
-        .typing-cursor { display: inline-block; width: 3px; height: 1em; background-color: var(--blue-primary); animation: blink 1s infinite; }
-        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
-        .lang-btn { opacity: 0.6; transition: all 0.3s ease; border-radius: 50%; padding: 2px; }
-        .lang-btn:hover { transform: scale(1.1); opacity: 1; }
-        .lang-btn.active { opacity: 1; box-shadow: 0 0 0 2px var(--blue-primary);}
-        #mobile-menu { transition: transform 0.3s ease-in-out; }
-        .section-card { background-color: var(--card-background); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid var(--border-color); border-radius: 12px; padding: 1.5rem; transition: transform 0.3s ease, box-shadow 0.3s ease; }
-        @media (min-width: 768px) { .section-card { padding: 2rem; } }
-        .section-card:hover { transform: translateY(-4px); box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
-        .section-divider { height: 2px; border-radius: 1px; margin-top: 0.5rem; margin-bottom: 2rem; }
-        #particles-js { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; }
-        #scroll-progress { position: fixed; top: 0; left: 0; height: 4px; background-color: var(--blue-primary); width: 0%; z-index: 100; }
-        
-        .cursor { position: fixed; top: 0; left: 0; width: 32px; height: 32px; pointer-events: none; z-index: 9999; transform: translate(-50%, -50%); transition: transform 0.1s ease; }
-        .cursor-dot { width: 6px; height: 6px; background-color: var(--blue-primary); border-radius: 50%; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); }
-        .cursor-outline { width: 100%; height: 100%; border: 1px solid var(--blue-primary); border-radius: 50%; transform: scale(0.5); opacity: 0.5; transition: all 0.3s ease-out; }
-        body.cursor-hover .cursor-outline { transform: scale(1.2); opacity: 1; background-color: rgba(26, 115, 232, 0.1); }
-        body.touch-device .cursor { display: none !important; }
-        body.touch-device, body.touch-device a, body.touch-device button, body.touch-device .lang-btn { cursor: auto; }
+        /* Scrollbar */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
 
-        #synergy-container { position: relative; width: 100%; max-width: 600px; height: 350px; margin: 2rem auto 0; }
-        @media (min-width: 768px) { #synergy-container { height: 400px; } }
-        #synergy-canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+        /* Glassmorphism Cards */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(229, 231, 235, 0.5);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02), 0 2px 4px -1px rgba(0, 0, 0, 0.02);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s;
+        }
+        .glass-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.02);
+            border-color: #1a73e8;
+        }
+
+        /* Navigation Active State */
+        .nav-link { position: relative; opacity: 0.7; transition: all 0.3s; }
+        .nav-link:hover, .nav-link.active { opacity: 1; color: #1a73e8; transform: translateX(5px); }
+        .nav-link::before {
+            content: ''; position: absolute; left: -24px; top: 50%;
+            width: 4px; height: 0; background: #1a73e8;
+            transform: translateY(-50%); transition: height 0.3s;
+            border-radius: 0 2px 2px 0;
+        }
+        .nav-link.active::before { height: 24px; }
+
+        /* Scroll Animations */
+        .reveal {
+            opacity: 0; transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+        }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        /* Typing Cursor */
+        .typing-cursor {
+            display: inline-block; width: 3px; height: 1em;
+            background-color: #1a73e8; animation: blink 1s step-end infinite;
+            vertical-align: middle;
+        }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+        /* Canvas & Particles */
+        #particles-js { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; }
+        
+        /* Synergy Container */
+        #synergy-container { 
+            position: relative; 
+            width: 100%; 
+            height: 450px;
+            z-index: 0;
+            pointer-events: none; 
+            overflow: hidden;
+            margin-top: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        #synergy-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Timeline Styles */
+        .timeline-item { position: relative; padding-left: 2rem; border-left: 2px solid #f1f5f9; padding-bottom: 2.5rem; }
+        .timeline-item:last-child { border-left-color: transparent; }
+        .timeline-dot {
+            position: absolute; left: -9px; top: 0;
+            width: 16px; height: 16px; border-radius: 50%;
+            background: #fff; border: 4px solid #1a73e8;
+            transition: transform 0.3s;
+            box-shadow: 0 0 0 4px white;
+        }
+        .timeline-item:hover .timeline-dot { transform: scale(1.2); border-color: #fbbc04; }
+
+        /* Terminal Window */
+        .terminal-header { background: #1e1e1e; border-bottom: 1px solid #333; border-radius: 8px 8px 0 0; }
+        .terminal-body { background: #1e1e1e; color: #d4d4d4; font-family: 'JetBrains Mono', monospace; border-radius: 0 0 8px 8px; }
+        .cmd-prompt { color: #4ec9b0; } 
+        .cmd-path { color: #ce9178; }
+
+        /* Immersive Background Text - Optimized for Responsiveness & Animation */
         #innovation-word {
             position: absolute;
-            top: 50%; left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 2rem; font-weight: 700;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            transform: translateY(-50%);
+            /* Adjusted size: smaller minimum and responsive scaling */
+            font-size: clamp(1.8rem, 6vw, 6rem); 
+            font-weight: 900;
+            letter-spacing: -0.03em;
+            color: #cbd5e1;
+            text-align: center;
+            pointer-events: none;
+            z-index: -1; 
+            /* Complex transition for cinematic effect */
+            transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1), filter 0.8s ease;
+            white-space: nowrap;
+            user-select: none;
             opacity: 0;
-            transition: opacity 1.5s ease-out 1s;
-            z-index: 6;
-            background: linear-gradient(to right, var(--yellow-accent) 40%, var(--blue-primary) 60%);
-            -webkit-background-clip: text; background-clip: text; color: transparent;
+            filter: blur(10px);
+            padding: 0 1rem;
         }
-        @media (min-width: 768px) { #innovation-word { font-size: 2.5rem; } }
-        #synergy-container.word-visible #innovation-word { opacity: 1; }
-
-        .terminal-window-card { background-color: var(--card-background); backdrop-filter: blur(10px); border: 1px solid var(--border-color); border-radius: 12px; overflow: hidden; cursor: pointer; }
-        .terminal-header { background-color: #e8e8e8; padding: 0.5rem 1rem; display: flex; align-items: center; gap: 0.5rem; }
-        .terminal-btn { width: 12px; height: 12px; border-radius: 50%; }
-        #terminal-static { font-family: var(--fira-code-font); padding: 1.5rem; }
-        .terminal-output { white-space: pre-wrap; color: var(--text-secondary); }
-        .terminal-keyword { color: var(--yellow-accent); font-weight: 500; }
-        .terminal-prompt { color: var(--blue-primary); font-weight: 500; }
-        .terminal-cursor-static { display: inline-block; width: 8px; height: 1.2em; background-color: var(--text-secondary); animation: blink 1.2s infinite; }
-        #terminal-prompt-message { color: var(--text-secondary); opacity: 0.7; animation: blink 2s infinite; }
+        
+        #innovation-word.active {
+            opacity: 0.8;
+            transform: translateY(-50%) scale(1);
+            filter: blur(0);
+        }
+        
+        #innovation-word.exit {
+            opacity: 0;
+            transform: translateY(-50%) scale(1.1);
+            filter: blur(8px);
+        }
     </style>
 </head>
-<body class="bg-white">
-    <div class="cursor">
-        <div class="cursor-dot"></div>
-        <div class="cursor-outline"></div>
-    </div>
+<body class="antialiased selection:bg-blue-100 selection:text-blue-700">
 
+    <!-- Background Particles -->
     <div id="particles-js"></div>
 
+    <!-- Scroll Progress Bar -->
+    <div id="scroll-progress" class="fixed top-0 left-0 h-1 bg-gradient-to-r from-blue-500 to-yellow-400 z-50 w-0 transition-all duration-100"></div>
+
     <!-- Mobile Header -->
-    <header class="md:hidden sticky top-0 bg-white/90 backdrop-blur-sm z-40 flex justify-between items-center p-4 border-b border-slate-200">
-        <h1 class="text-xl font-bold">Mateus Correia</h1>
-        <button id="hamburger-btn" class="p-2 text-slate-600">
+    <header class="md:hidden sticky top-0 bg-[#202124]/90 backdrop-blur-md z-40 flex justify-between items-center p-4 border-b border-gray-700 shadow-sm text-white">
+        <h1 class="text-xl font-bold tracking-tight">Mateus Correia</h1>
+        <button id="hamburger-btn" class="p-2 text-gray-300 focus:outline-none">
             <i class="fas fa-bars fa-lg"></i>
         </button>
     </header>
 
-    <div class="flex">
-        <!-- === LEFT SIDEBAR (NAVIGATION) === -->
-        <aside class="hidden md:flex w-full md:w-1/4 lg:w-1/5 p-8 border-r flex-col justify-between h-screen sticky top-0" style="background-color: var(--sidebar-background); border-color: var(--border-color);">
+    <div class="flex flex-col md:flex-row min-h-screen">
+        
+        <!-- === SIDEBAR === -->
+        <aside class="hidden md:flex flex-col justify-between w-full md:w-72 lg:w-80 h-screen fixed top-0 left-0 bg-[#202124] text-gray-300 p-8 border-r border-gray-800 z-30">
             <div>
-                <h1 class="text-2xl font-bold mb-12" style="color: var(--sidebar-text-primary);">Mateus Correia</h1>
+                <h1 class="text-2xl font-bold text-white mb-12 tracking-tight">Mateus Correia</h1>
+                
                 <nav>
-                    <ul class="space-y-4" id="nav-links-desktop" style="color: var(--sidebar-text-secondary);">
-                        <li><a href="#home" class="nav-link" data-translate-key="nav_home">Início</a></li>
-                        <li><a href="#sobre" class="nav-link" data-translate-key="nav_about">Sobre Mim</a></li>
-                        <li><a href="#visao" class="nav-link" data-translate-key="nav_vision">Visão</a></li>
-                        <li><a href="#experiencia" class="nav-link" data-translate-key="nav_experience">Experiência</a></li>
-                        <li><a href="#projetos" class="nav-link" data-translate-key="nav_projects">Projetos</a></li>
-                        <li><a href="#reconhecimentos" class="nav-link" data-translate-key="nav_recognitions">Reconhecimentos</a></li>
-                        <li><a href="#formacao" class="nav-link" data-translate-key="nav_formation">Formação</a></li>
-                        <li><a href="#futuro" class="nav-link" data-translate-key="nav_future">Futuro</a></li>
-                        <li><a href="#contato" class="nav-link" data-translate-key="nav_contact">Contato</a></li>
-                        <li><a href="https://drive.google.com/file/d/1UCAcHe7RjsXDvnneBDcSrfia1TdRjaoO/view?usp=sharing" target="_blank" class="nav-link" data-translate-key="nav_cv">Meu CV <i class="fas fa-download fa-xs ml-1"></i></a></li>
+                    <ul class="space-y-4 text-base" id="nav-links-desktop">
+                        <li><a href="#home" class="nav-link block hover:text-white" data-translate-key="nav_home">Início</a></li>
+                        <li><a href="#sobre" class="nav-link block hover:text-white" data-translate-key="nav_about">Sobre Mim</a></li>
+                        <li><a href="#visao" class="nav-link block hover:text-white" data-translate-key="nav_vision">Visão</a></li>
+                        <li><a href="#experiencia" class="nav-link block hover:text-white" data-translate-key="nav_experience">Experiência</a></li>
+                        <li><a href="#projetos" class="nav-link block hover:text-white" data-translate-key="nav_projects">Projetos</a></li>
+                        <li><a href="#reconhecimentos" class="nav-link block hover:text-white" data-translate-key="nav_recognitions">Reconhecimentos</a></li>
+                        <li><a href="#formacao" class="nav-link block hover:text-white" data-translate-key="nav_formation">Formação</a></li>
+                        <li><a href="#futuro" class="nav-link block hover:text-white" data-translate-key="nav_future">Futuro</a></li>
+                        <li><a href="#contato" class="nav-link block hover:text-white" data-translate-key="nav_contact">Contato</a></li>
+                        <li>
+                            <a href="https://drive.google.com/file/d/1UCAcHe7RjsXDvnneBDcSrfia1TdRjaoO/view?usp=sharing" target="_blank" class="nav-link block hover:text-blue-400 flex items-center gap-2">
+                                <span data-translate-key="nav_cv">Meu CV</span> <i class="fas fa-download text-xs"></i>
+                            </a>
+                        </li>
                     </ul>
-                      <div class="mt-12 pt-8 border-t" style="border-color: var(--border-color);">
-                          <div class="lang-selector flex space-x-3 mb-4">
-                              <img src="https://flagcdn.com/br.svg" width="24" alt="Português" class="lang-btn" data-lang="pt">
-                              <img src="https://flagcdn.com/us.svg" width="24" alt="English" class="lang-btn" data-lang="en">
-                              <img src="https://flagcdn.com/es.svg" width="24" alt="Español" class="lang-btn" data-lang="es">
-                          </div>
-                          <p id="current-time-desktop" class="text-xs" style="color: var(--sidebar-text-secondary);"></p>
-                      </div>
                 </nav>
             </div>
-        </aside>
 
-        <!-- Mobile Menu (Off-canvas) -->
-        <aside id="mobile-menu" class="md:hidden fixed top-0 left-0 w-full h-full z-50 transform -translate-x-full p-8 flex flex-col justify-between" style="background-color: var(--sidebar-background);">
-            <div>
-                <div class="flex justify-between items-center mb-12">
-                    <h1 class="text-2xl font-bold" style="color: var(--sidebar-text-primary);">Mateus Correia</h1>
-                    <button id="close-menu-btn" class="p-2" style="color: var(--sidebar-text-primary);">
-                        <i class="fas fa-times fa-lg"></i>
+            <div class="mt-12 pt-8 border-t border-gray-700">
+                <div class="flex space-x-3 mb-4 lang-selector">
+                    <button class="lang-btn opacity-60 hover:opacity-100 hover:scale-110 transition-all rounded-full overflow-hidden w-6 h-6 border border-gray-600" data-lang="pt">
+                        <img src="https://flagcdn.com/br.svg" alt="Português" class="w-full h-full object-cover">
+                    </button>
+                    <button class="lang-btn opacity-60 hover:opacity-100 hover:scale-110 transition-all rounded-full overflow-hidden w-6 h-6 border border-gray-600" data-lang="en">
+                        <img src="https://flagcdn.com/us.svg" alt="English" class="w-full h-full object-cover">
+                    </button>
+                    <button class="lang-btn opacity-60 hover:opacity-100 hover:scale-110 transition-all rounded-full overflow-hidden w-6 h-6 border border-gray-600" data-lang="es">
+                        <img src="https://flagcdn.com/es.svg" alt="Español" class="w-full h-full object-cover">
                     </button>
                 </div>
-                <nav>
-                    <ul class="space-y-6 text-xl" id="nav-links-mobile" style="color: var(--sidebar-text-secondary);">
-                        <li><a href="#home" class="nav-link-mobile" data-translate-key="nav_home">Início</a></li>
-                        <li><a href="#sobre" class="nav-link-mobile" data-translate-key="nav_about">Sobre Mim</a></li>
-                        <li><a href="#visao" class="nav-link-mobile" data-translate-key="nav_vision">Visão</a></li>
-                        <li><a href="#experiencia" class="nav-link-mobile" data-translate-key="nav_experience">Experiência</a></li>
-                        <li><a href="#projetos" class="nav-link-mobile" data-translate-key="nav_projects">Projetos</a></li>
-                        <li><a href="#reconhecimentos" class="nav-link-mobile" data-translate-key="nav_recognitions">Reconhecimentos</a></li>
-                        <li><a href="#formacao" class="nav-link-mobile" data-translate-key="nav_formation">Formação</a></li>
-                        <li><a href="#futuro" class="nav-link-mobile" data-translate-key="nav_future">Futuro</a></li>
-                        <li><a href="#contato" class="nav-link-mobile" data-translate-key="nav_contact">Contato</a></li>
-                        <li><a href="https://drive.google.com/file/d/1UCAcHe7RjsXDvnneBDcSrfia1TdRjaoO/view?usp=sharing" target="_blank" class="nav-link-mobile" data-translate-key="nav_cv">Meu CV <i class="fas fa-download fa-xs ml-1"></i></a></li>
-                    </ul>
-                </nav>
-            </div>
-            <div class="mt-12 pt-8 border-t" style="border-color: var(--border-color);">
-                <div class="lang-selector flex space-x-3 mb-4">
-                    <img src="https://flagcdn.com/br.svg" width="24" alt="Português" class="lang-btn" data-lang="pt">
-                    <img src="https://flagcdn.com/us.svg" width="24" alt="English" class="lang-btn" data-lang="en">
-                    <img src="https://flagcdn.com/es.svg" width="24" alt="Español" class="lang-btn" data-lang="es">
-                </div>
-                 <p id="current-time-mobile" class="text-xs" style="color: var(--sidebar-text-secondary);"></p>
+                <p id="current-time-desktop" class="text-xs text-gray-500 font-mono"></p>
             </div>
         </aside>
 
-        <!-- === RIGHT SIDE (MAIN CONTENT) === -->
-        <main class="w-full h-screen overflow-y-auto main-content relative">
-            <div id="scroll-progress"></div>
-            
-            <div class="max-w-4xl mx-auto p-6 md:px-16 relative z-10">
-                <!-- HOME SECTION -->
-                <section id="home" class="min-h-screen flex flex-col justify-center items-start">
-                    <img src="https://i.imgur.com/xlFe7vd.jpeg" alt="Foto de Mateus Correia" class="w-32 h-32 rounded-full mb-8 shadow-xl border-4 border-white object-cover scroll-animate">
-                    <h2 class="text-4xl md:text-5xl font-bold leading-tight scroll-animate min-h-[100px] md:min-h-[128px]" style="transition-delay: 100ms;">
-                        <span data-translate-key="home_title_prefix">Mateus Correia é um</span>
-                        <br class="hidden md:block">
-                        <span id="typing-text" class="text-blue-600"></span><span class="typing-cursor"></span>
-                    </h2>
-                    <p class="mt-4 text-xl scroll-animate" style="transition-delay: 200ms;" data-translate-key="home_subtitle">Conectando Engenharia Biomédica e Visão Computacional para criar soluções robustas e inovadoras que resolvem desafios complexos.</p>
-                    <a href="#sobre" class="group mt-8 text-white font-medium px-8 py-3 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-px scroll-animate flex items-center gap-3" style="transition-delay: 300ms; background-color: var(--blue-primary);" onmouseover="this.style.backgroundColor='var(--blue-hover)'" onmouseout="this.style.backgroundColor='var(--blue-primary)'" data-translate-key="home_button">
-                        Conheça-me <i class="fas fa-arrow-right transition-transform duration-300 group-hover:translate-x-1"></i>
-                    </a>
-                </section>
+        <!-- === MOBILE MENU === -->
+        <div id="mobile-menu" class="fixed inset-0 z-50 bg-[#202124] transform translate-x-full transition-transform duration-300 flex flex-col p-6 md:hidden">
+            <div class="flex justify-between items-center mb-10">
+                <h2 class="text-2xl font-bold text-white">Menu</h2>
+                <button id="close-menu-btn" class="text-white p-2"><i class="fas fa-times fa-lg"></i></button>
+            </div>
+            <nav class="flex-1 overflow-y-auto">
+                <ul class="space-y-6 text-xl font-medium text-gray-400" id="nav-links-mobile">
+                    <li><a href="#home" class="nav-link-mobile block hover:text-white" data-translate-key="nav_home">Início</a></li>
+                    <li><a href="#sobre" class="nav-link-mobile block hover:text-white" data-translate-key="nav_about">Sobre Mim</a></li>
+                    <li><a href="#experiencia" class="nav-link-mobile block hover:text-white" data-translate-key="nav_experience">Experiência</a></li>
+                    <li><a href="#projetos" class="nav-link-mobile block hover:text-white" data-translate-key="nav_projects">Projetos</a></li>
+                    <li><a href="#contato" class="nav-link-mobile block hover:text-white" data-translate-key="nav_contact">Contato</a></li>
+                    <li><a href="https://drive.google.com/file/d/1UCAcHe7RjsXDvnneBDcSrfia1TdRjaoO/view?usp=sharing" target="_blank" class="nav-link-mobile block hover:text-blue-400" data-translate-key="nav_cv">Meu CV <i class="fas fa-download ml-2"></i></a></li>
+                </ul>
+            </nav>
+            <div class="pt-6 border-t border-gray-700 mt-6 flex justify-between items-center">
+                <div class="flex space-x-4 lang-selector">
+                    <img src="https://flagcdn.com/br.svg" width="28" alt="PT" class="lang-btn rounded cursor-pointer border border-gray-600 opacity-80" data-lang="pt">
+                    <img src="https://flagcdn.com/us.svg" width="28" alt="EN" class="lang-btn rounded cursor-pointer border border-gray-600 opacity-80" data-lang="en">
+                    <img src="https://flagcdn.com/es.svg" width="28" alt="ES" class="lang-btn rounded cursor-pointer border border-gray-600 opacity-80" data-lang="es">
+                </div>
+            </div>
+        </div>
 
-                <!-- ABOUT / TERMINAL-STYLE SECTION -->
-                <section id="sobre" class="py-24 md:py-32">
-                    <h3 class="text-3xl md:text-4xl font-bold scroll-animate flex items-center gap-3" data-translate-key="about_title"><i class="fas fa-terminal text-amber-500"></i> Sobre Mim</h3>
-                    <div class="section-divider scroll-animate w-20" style="background-color: var(--yellow-accent);"></div>
-                    <div class="terminal-window-card scroll-animate">
-                        <div class="terminal-header">
-                            <div class="terminal-btn bg-red-500"></div>
-                            <div class="terminal-btn bg-yellow-500"></div>
-                            <div class="terminal-btn bg-green-500"></div>
-                        </div>
-                        <div id="terminal-static">
-                            <div class="terminal-output">
-                                <span class="terminal-prompt">mateus@portfolio:~$</span> whoami <div class="terminal-cursor-static ml-2"></div>
-                            </div>
-                            <div id="terminal-prompt-message" class="mt-4 pl-2 text-lg" data-translate-key="terminal_prompt_message">Clique para executar...</div>
-                            <div id="terminal-content" class="terminal-output mt-4 pl-2 text-lg"></div>
-                        </div>
-                    </div>
-                </section>
+        <!-- === MAIN CONTENT === -->
+        <main class="flex-1 md:ml-72 lg:ml-80 relative z-10 main-content">
+            <div class="max-w-6xl mx-auto px-6 py-12 md:px-16 md:py-24">
                 
-                <!-- VISION SECTION (INTERACTIVE SYNERGY ANIMATION) -->
-                <section id="visao" class="py-24 md:py-32">
-                    <h3 class="text-3xl md:text-4xl font-bold scroll-animate flex items-center gap-3" data-translate-key="vision_title"><i class="fas fa-brain text-blue-600"></i> A Sinergia: Saúde & Tecnologia</h3>
-                    <div class="section-divider scroll-animate w-20 bg-blue-600"></div>
-                    <p class="text-lg leading-relaxed scroll-animate mb-8" data-translate-key="vision_subtitle">A minha jornada começou na saúde, com pesquisas em neurociência. Foi lá que a faísca acendeu: e se pudéssemos replicar o cérebro artificialmente? Essa pergunta uniu os meus dois mundos. Hoje, aplico meu conhecimento para criar sistemas de IA que resolvem problemas complexos em diversas áreas, com um foco especial e apaixonado pelo setor da saúde.</p>
-                    <div id="synergy-container" class="scroll-animate">
+                <!-- HOME -->
+                <section id="home" class="min-h-[85vh] flex flex-col justify-center items-start">
+                    <div class="reveal w-full">
+                        <div class="relative w-32 h-32 md:w-40 md:h-40 mb-10 group">
+                            <img src="https://i.imgur.com/xlFe7vd.jpeg" alt="Mateus Correia" class="relative w-full h-full rounded-full object-cover shadow-2xl ring-4 ring-white">
+                        </div>
+                        
+                        <h2 class="text-5xl md:text-7xl font-black text-gray-900 leading-tight mb-6 tracking-tight">
+                            <span data-translate-key="home_title_prefix" class="text-gray-400 font-light block text-2xl md:text-3xl mb-3 tracking-normal">Mateus Correia é um</span>
+                            <span id="typing-text" class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-800"></span><span class="typing-cursor"></span>
+                        </h2>
+                        
+                        <p class="mt-4 text-xl md:text-2xl text-gray-500 max-w-3xl leading-relaxed font-light" data-translate-key="home_subtitle">
+                            Conectando Engenharia Biomédica e Visão Computacional para criar soluções robustas e inovadoras.
+                        </p>
+
+                        <div class="mt-12 flex flex-wrap gap-5">
+                            <a href="#sobre" class="px-8 py-4 bg-gray-900 text-white font-semibold rounded-xl shadow-xl hover:bg-black hover:shadow-2xl transition-all transform hover:-translate-y-1 flex items-center gap-3 group" data-translate-key="home_button">
+                                Conheça-me <i class="fas fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                            </a>
+                            <a href="#projetos" class="px-8 py-4 bg-white text-gray-800 font-semibold rounded-xl shadow-lg border border-gray-100 hover:border-blue-200 hover:text-blue-600 transition-all" data-translate-key="nav_projects">
+                                Ver Projetos
+                            </a>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ABOUT -->
+                <section id="sobre" class="py-24 border-t border-gray-100">
+                    <div class="flex flex-col md:flex-row gap-4 items-baseline mb-10 reveal">
+                        <h3 class="text-3xl font-bold text-gray-900 flex items-center gap-4">
+                            <span class="w-12 h-12 flex items-center justify-center bg-blue-50 text-blue-600 rounded-xl"><i class="fas fa-terminal"></i></span> 
+                            <span data-translate-key="nav_about">Sobre Mim</span>
+                        </h3>
+                    </div>
+
+                    <div class="reveal w-full mx-auto shadow-2xl rounded-2xl overflow-hidden bg-[#1e1e1e]">
+                        <div class="terminal-header p-4 flex items-center gap-2 bg-[#2d2d2d]">
+                            <div class="w-3 h-3 rounded-full bg-[#ff5f56]"></div>
+                            <div class="w-3 h-3 rounded-full bg-[#ffbd2e]"></div>
+                            <div class="w-3 h-3 rounded-full bg-[#27c93f]"></div>
+                            <div class="ml-4 text-xs text-gray-400 font-mono flex-1 text-center opacity-50">zsh — bio.txt</div>
+                        </div>
+                        <div class="terminal-body p-8 text-sm md:text-base min-h-[250px] cursor-text" id="terminal-click-area">
+                            <div class="mb-4 font-mono">
+                                <span class="cmd-prompt">➜</span> <span class="cmd-path text-blue-400">~</span> <span class="text-green-400">whoami</span>
+                                <br>
+                                <span class="text-gray-300">Mateus Correia</span>
+                            </div>
+                            
+                            <div class="font-mono">
+                                <span class="cmd-prompt">➜</span> <span class="cmd-path text-blue-400">~</span> <span class="text-green-400">cat</span> bio.txt
+                            </div>
+                            <div id="terminal-content" class="mt-4 text-gray-300 leading-loose whitespace-pre-wrap font-mono"></div>
+                            <div id="terminal-cursor" class="typing-cursor mt-1"></div>
+                            <div id="terminal-hint" class="mt-8 text-gray-500 text-xs italic text-center animate-pulse" data-translate-key="terminal_prompt_message">Clique para executar...</div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- VISION -->
+                <section id="visao" class="py-24 border-t border-gray-100">
+                    <div class="mb-12 reveal">
+                        <h3 class="text-3xl font-bold text-gray-900 flex items-center gap-4">
+                            <span class="w-12 h-12 flex items-center justify-center bg-blue-50 text-blue-600 rounded-xl"><i class="fas fa-brain"></i></span>
+                            <span data-translate-key="vision_title">A Sinergia: Saúde & Tecnologia</span>
+                        </h3>
+                        <p class="mt-6 text-lg text-gray-600 leading-relaxed max-w-4xl font-light" data-translate-key="vision_subtitle">
+                            A minha jornada começou na saúde, com pesquisas em neurociência. Foi lá que a faísca acendeu: e se pudéssemos replicar o cérebro artificialmente? Essa pergunta uniu os meus dois mundos. Hoje, aplico meu conhecimento para criar sistemas de IA que resolvem problemas complexos em diversas áreas, com um foco especial e apaixonado pelo setor da saúde.
+                        </p>
+                    </div>
+
+                    <div id="synergy-container" class="reveal">
                         <canvas id="synergy-canvas"></canvas>
-                        <div id="innovation-word" data-translate-key="vision_innovation">INOVAÇÃO</div>
+                        <div id="innovation-word">FUTURO</div>
                     </div>
                 </section>
 
-                <!-- EXPERIENCE SECTION -->
-                <section id="experiencia" class="py-24 md:py-32">
-                     <h3 class="text-3xl md:text-4xl font-bold scroll-animate flex items-center gap-3" data-translate-key="experience_title"><i class="fa-solid fa-briefcase text-blue-600"></i>Experiência Profissional</h3>
-                    <div class="section-divider scroll-animate w-20 bg-blue-600"></div>
-                     <div class="w-full space-y-8">
-                         <!-- NOVA EXPERIÊNCIA: NATAL DO BEM -->
-                         <div class="section-card scroll-animate"><h4 class="text-xl font-bold" data-translate-key="exp_natal_title">Supervisor Técnico</h4><p class="text-md font-medium text-slate-500" data-translate-key="exp_natal_company">Natal do Bem 2025 <span class="text-sm ml-2">(2025)</span></p><p class="mt-4 text-lg" data-translate-key="exp_natal_desc">Atuando na supervisão técnica do maior natal gratuito do Brasil, uma iniciativa do Governo de Goiás, Goiás Social e OVG, garantindo a excelência operacional e tecnológica das atrações.</p></div>
+                <!-- EXPERIENCE -->
+                <section id="experiencia" class="py-24 border-t border-gray-100">
+                    <div class="mb-16 reveal">
+                        <h3 class="text-3xl font-bold text-gray-900 flex items-center gap-4">
+                            <span class="w-12 h-12 flex items-center justify-center bg-blue-50 text-blue-600 rounded-xl"><i class="fa-solid fa-briefcase"></i></span>
+                            <span data-translate-key="experience_title">Experiência Profissional</span>
+                        </h3>
+                    </div>
 
-                         <div class="section-card scroll-animate"><h4 class="text-xl font-bold" data-translate-key="exp1_title">Instrutor de Nível Superior em IA e Cyber Segurança</h4><p class="text-md font-medium text-slate-500" data-translate-key="exp1_company">Organização das Voluntárias de Goiás (OVG) <span class="text-sm ml-2">(Presente)</span></p><p class="mt-4 text-lg" data-translate-key="exp1_desc">Atuando no Centro da Juventude “Tecendo o Futuro”, lidero iniciativas tecnológicas e coordeno ações para a formação de jovens em competências digitais e inovação, capacitando a próxima geração de talentos.</p></div>
-                         <div class="section-card scroll-animate"><h4 class="text-xl font-bold" data-translate-key="exp2_title">Desenvolvedor de Projetos de Visão Computacional</h4><p class="text-md font-medium text-slate-500" data-translate-key="exp2_company">Eventos de Grande Porte <span class="text-sm ml-2">(2 Anos)</span></p><p class="mt-4 text-lg" data-translate-key="exp2_desc">Produzi soluções de visão computacional escaláveis para eventos de massa, como na edição do Totus Tuus no estádio Serra Dourada, atendendo um público de mais de 60 mil pessoas e garantindo performance e confiabilidade.</p></div>
-                         <div class="section-card scroll-animate"><h4 class="text-xl font-bold" data-translate-key="exp3_title">Desenvolvedor de Projetos de Tecnologia</h4><p class="text-md font-medium text-slate-500" data-translate-key="exp3_company">Paróquia Nossa Senhora da Assunção <span class="text-sm ml-2">(5 Anos)</span></p><p class="mt-4 text-lg" data-translate-key="exp3_desc">Desenvolvi e implementei múltiplos projetos para uma instituição de grande visibilidade e demanda, incluindo totens interativos e sistemas autônomos para transmissão ao vivo, otimizando a comunicação e o alcance.</p></div>
-                     </div>
-                </section>
+                    <div class="ml-4 md:ml-10 reveal border-l-2 border-gray-100 pl-8 space-y-12">
+                        <div class="relative group">
+                            <div class="absolute -left-[41px] top-1 w-5 h-5 rounded-full bg-white border-4 border-gray-300 group-hover:border-blue-500 group-hover:scale-125 transition-all duration-300"></div>
+                            <span class="text-sm font-bold uppercase tracking-wider text-blue-600 mb-1 block">2025</span>
+                            <h4 class="text-2xl font-bold text-gray-900 mb-1" data-translate-key="exp_natal_title">Supervisor Técnico</h4>
+                            <p class="text-base font-semibold text-gray-500 mb-3" data-translate-key="exp_natal_company">Natal do Bem 2025</p>
+                            <p class="text-gray-600 leading-relaxed" data-translate-key="exp_natal_desc">Atuando na supervisão técnica do maior natal gratuito do Brasil, garantindo a excelência operacional e tecnológica.</p>
+                        </div>
 
-                <!-- PROJECTS SECTION -->
-                 <section id="projetos" class="py-24 md:py-32">
-                     <h3 class="text-3xl md:text-4xl font-bold scroll-animate flex items-center gap-3" data-translate-key="projects_title"><i class="fa-solid fa-flask-vial text-amber-500"></i>Pesquisa & Projetos</h3>
-                     <div class="section-divider scroll-animate w-20" style="background-color: var(--yellow-accent);"></div>
-                     <div class="w-full space-y-8">
-                         <!-- NOVO PROJETO: CRIANÇA ESPERANÇA -->
-                         <div class="section-card scroll-animate"><h4 class="text-xl font-bold" data-translate-key="proj_crianca_title">Projeto Startups Sociais</h4><p class="text-md font-medium text-slate-500" data-translate-key="proj_crianca_company">Edital Criança Esperança <span class="text-sm ml-2">(Submissão)</span></p><p class="mt-4 text-lg" data-translate-key="proj_crianca_desc">Submissão de projeto para o Criança Esperança com o objetivo de desenvolver soluções com IA para a população do setor Novo Mundo em Goiânia, criando startups com adolescentes em situação de vulnerabilidade.</p></div>
+                        <div class="relative group">
+                            <div class="absolute -left-[41px] top-1 w-5 h-5 rounded-full bg-white border-4 border-gray-300 group-hover:border-blue-500 group-hover:scale-125 transition-all duration-300"></div>
+                            <span class="text-sm font-bold uppercase tracking-wider text-blue-600 mb-1 block">Presente</span>
+                            <h4 class="text-2xl font-bold text-gray-900 mb-1" data-translate-key="exp1_title">Instrutor de Nível Superior em IA</h4>
+                            <p class="text-base font-semibold text-gray-500 mb-3" data-translate-key="exp1_company">OVG (Centro da Juventude)</p>
+                            <p class="text-gray-600 leading-relaxed" data-translate-key="exp1_desc">Lidero iniciativas tecnológicas e coordeno ações para a formação de jovens em competências digitais e inovação.</p>
+                        </div>
 
-                         <div class="section-card scroll-animate"><h4 class="text-xl font-bold" data-translate-key="proj1_title">Projeto de Engenharia Biomédica</h4><p class="text-md font-medium text-slate-500" data-translate-key="proj1_company">Colaboração com estudantes de IA (INF - UFG)</p><p class="mt-4 text-lg" data-translate-key="proj1_desc">Atualmente em fase inicial, este projeto visa criar uma solução de hardware e software inovadora na intersecção da saúde e tecnologia, com foco na aquisição e análise inteligente de sinais biológicos.</p></div>
-                         <div class="section-card scroll-animate"><h4 class="text-xl font-bold" data-translate-key="proj2_title">Pesquisa Interdisciplinar Internacional</h4><p class="text-md font-medium text-slate-500" data-translate-key="proj2_company">Parceria Laboratory of Cheminformatics (UFG) & Museu de História Natural da França</p><p class="mt-4 text-lg" data-translate-key="proj2_desc">Convidado a colaborar em um projeto de pesquisa de alto impacto, vinculado ao Programa de Pós-Graduação em Farmácia da UFG, para aplicar tecnologia na resolução de desafios complexos no campo da saúde.</p></div>
-                         <div class="section-card scroll-animate"><h4 class="text-xl font-bold" data-translate-key="proj5_title">Convite para Pesquisa em Física e Computação</h4><p class="text-md font-medium text-slate-500" data-translate-key="proj5_company">Pós-Graduação (UFG)</p><p class="mt-4 text-lg" data-translate-key="proj5_desc">Após a graduação, recebi um convite de um professor da física e computação para participar de uma pesquisa focada em correlacionar um sistema fechado de senoides com os padrões senoidais do coração, unindo física de sistemas e fisiologia cardíaca.</p></div>
-                         <div class="section-card scroll-animate"><h4 class="text-xl font-bold" data-translate-key="proj6_title">Pesquisa Clínica em Reabilitação Cardíaca</h4><p class="text-md font-medium text-slate-500" data-translate-key="proj6_company">Núcleo de Pesquisa em Reabilitação Cardíaca (HGG e HC)</p><p class="mt-4 text-lg" data-translate-key="proj6_desc">Participei de um projeto de pesquisa com humanos no Hospital Geral de Goiânia (HGG) e no Hospital das Clínicas (HC), focado na reabilitação cardíaca e na análise de desfechos clínicos em pacientes.</p></div>
-                         <div class="section-card scroll-animate"><h4 class="text-xl font-bold" data-translate-key="proj7_title">Colaboração em Pesquisa com a Física</h4><p class="text-md font-medium text-slate-500" data-translate-key="proj7_company">Interface: Fisiologia e Física (UFG)</p><p class="mt-4 text-lg" data-translate-key="proj7_desc">Durante a iniciação científica, fui convidado para uma colaboração com a física para testar compostos químicos no tratamento de hipertensão com causa neuronal, aplicando princípios interdisciplinares na pesquisa.</p></div>
-                         <div class="section-card scroll-animate"><h4 class="text-xl font-bold" data-translate-key="proj4_title">Bolsista de Iniciação Científica (PIBIC/UFG)</h4><p class="text-md font-medium text-slate-500" data-translate-key="proj4_company">Laboratório Integrado de Fisiologia Cardiovascular e Neurológica</p><p class="mt-4 text-lg" data-translate-key="proj4_desc">Investiguei as alterações cardiovasculares na prole de ratas submetidas ao bloqueio do receptor Mas. Adquiri experiência em pesquisa experimental, manuseio de animais e técnicas de fisiologia cardiovascular.</p></div>
-                         <div class="section-card scroll-animate"><h4 class="text-xl font-bold" data-translate-key="proj3_title">Iniciação Científica Voluntária (PIVIC/UFG)</h4><p class="text-md font-medium text-slate-500" data-translate-key="proj3_company">Centro de Pesquisa em Neurociência e Fisiologia Cardiovascular</p><p class="mt-4 text-lg" data-translate-key="proj3_desc">Avaliei os efeitos do treinamento físico na modulação autonômica e estresse oxidativo em ratos hipertensos, analisando adaptações cardiovasculares e benefícios para a saúde.</p></div>
-                     </div>
-                 </section>
+                         <div class="relative group">
+                            <div class="absolute -left-[41px] top-1 w-5 h-5 rounded-full bg-white border-4 border-gray-300 group-hover:border-blue-500 group-hover:scale-125 transition-all duration-300"></div>
+                            <span class="text-sm font-bold uppercase tracking-wider text-gray-400 mb-1 block">2 Anos</span>
+                            <h4 class="text-2xl font-bold text-gray-900 mb-1" data-translate-key="exp2_title">Dev. Visão Computacional</h4>
+                            <p class="text-base font-semibold text-gray-500 mb-3" data-translate-key="exp2_company">Eventos de Grande Porte</p>
+                            <p class="text-gray-600 leading-relaxed" data-translate-key="exp2_desc">Soluções de visão computacional escaláveis para eventos de massa (60k+ pessoas), garantindo performance.</p>
+                        </div>
 
-                <!-- AWARDS SECTION -->
-                <section id="reconhecimentos" class="py-24 md:py-32">
-                    <h3 class="text-3xl md:text-4xl font-bold scroll-animate flex items-center gap-3" data-translate-key="recognitions_title"><i class="fa-solid fa-award text-blue-600"></i>Reconhecimentos</h3>
-                    <div class="section-divider scroll-animate w-20 bg-blue-600"></div>
-                    <div class="section-card scroll-animate">
-                        <h4 class="text-xl font-bold" data-translate-key="rec1_title">Dupla Menção Honrosa na 30ª Semana do ICB/UFG</h4>
-                        <p class="mt-4 text-lg" data-translate-key="rec1_desc">Recebi duas menções honrosas como melhor trabalho na área de Ciências da Saúde por pesquisas sobre neuropatias autonômicas no diabetes mellitus tipo 2, utilizando a variabilidade da frequência cardíaca como ferramenta de análise.</p>
+                        <div class="relative group">
+                            <div class="absolute -left-[41px] top-1 w-5 h-5 rounded-full bg-white border-4 border-gray-300 group-hover:border-blue-500 group-hover:scale-125 transition-all duration-300"></div>
+                            <span class="text-sm font-bold uppercase tracking-wider text-gray-400 mb-1 block">5 Anos</span>
+                            <h4 class="text-2xl font-bold text-gray-900 mb-1" data-translate-key="exp3_title">Dev. Projetos de Tecnologia</h4>
+                            <p class="text-base font-semibold text-gray-500 mb-3" data-translate-key="exp3_company">Paróquia N. Sra. Assunção</p>
+                            <p class="text-gray-600 leading-relaxed" data-translate-key="exp3_desc">Sistemas autônomos para transmissão ao vivo e totens interativos.</p>
+                        </div>
                     </div>
                 </section>
 
-                <!-- FORMATION & EVENTS SECTION -->
-                <section id="formacao" class="py-24 md:py-32">
-                    <h3 class="text-3xl md:text-4xl font-bold scroll-animate flex items-center gap-3" data-translate-key="formation_title"><i class="fa-solid fa-chalkboard-user text-amber-500"></i>Formação Complementar e Eventos</h3>
-                    <div class="section-divider scroll-animate w-20" style="background-color: var(--yellow-accent);"></div>
-                    <div class="section-card scroll-animate">
-                        <ul class="list-disc list-inside text-lg space-y-3" data-translate-key="formation_list">
-                            <li>Voluntário no Robótica 2024 - Maior evento de robótica da América Latina.</li>
-                            <li>Brasil Global Summit - Evento com tendências tecnológicas nacionais e internacionais.</li>
-                            <li>1° Ideathon Lab Soluções Inovadores de Prototipagem para a Saúde – 2020.</li>
-                            <li>XXIV e XXIII Simpósio Brasileiro de Fisiologia Cardiovascular.</li>
-                            <li>Minicurso: Variabilidade da Frequência Cardíaca (30ª Semana do ICB).</li>
-                            <li>Treinamento: Aspectos Metodológicos de Antropometria e Recordatório Nutricional (20 horas).</li>
-                            <li>15º CONPEEX - Congresso de Pesquisa, Ensino e Extensão – 2018.</li>
-                            <li>...e diversas outras participações.</li>
+                <!-- PROJECTS -->
+                <section id="projetos" class="py-24 border-t border-gray-100">
+                    <div class="mb-16 reveal">
+                        <h3 class="text-3xl font-bold text-gray-900 flex items-center gap-4">
+                            <span class="w-12 h-12 flex items-center justify-center bg-amber-50 text-amber-600 rounded-xl"><i class="fa-solid fa-flask-vial"></i></span>
+                            <span data-translate-key="projects_title">Pesquisa & Projetos</span>
+                        </h3>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 reveal">
+                        <div class="glass-card p-8 rounded-2xl hover:border-blue-500 transition-all group">
+                            <div class="flex justify-between items-start mb-4">
+                                <span class="bg-blue-100 text-blue-700 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">Destaque</span>
+                            </div>
+                            <h4 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors" data-translate-key="proj_crianca_title">Startups Sociais</h4>
+                            <p class="text-sm font-medium text-gray-500 mb-4" data-translate-key="proj_crianca_company">Edital Criança Esperança</p>
+                            <p class="text-gray-600 leading-relaxed" data-translate-key="proj_crianca_desc">Submissão de projeto para desenvolver soluções com IA para a população do setor Novo Mundo em Goiânia, criando startups com adolescentes.</p>
+                        </div>
+
+                        <div class="glass-card p-8 rounded-2xl hover:border-blue-500 transition-all group">
+                            <h4 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors" data-translate-key="proj1_title">Engenharia Biomédica</h4>
+                            <p class="text-sm font-medium text-gray-500 mb-4" data-translate-key="proj1_company">Colaboração INF-UFG</p>
+                            <p class="text-gray-600 leading-relaxed" data-translate-key="proj1_desc">Hardware e software inovador para aquisição e análise inteligente de sinais biológicos.</p>
+                        </div>
+                        
+                        <div class="glass-card p-8 rounded-2xl hover:border-blue-500 transition-all group">
+                            <h4 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors" data-translate-key="proj2_title">Pesquisa Internacional</h4>
+                            <p class="text-sm font-medium text-gray-500 mb-4" data-translate-key="proj2_company">UFG & Museu Hist. Natural França</p>
+                            <p class="text-gray-600 leading-relaxed" data-translate-key="proj2_desc">Colaboração em projeto de alto impacto, aplicando tecnologia para desafios complexos na saúde.</p>
+                        </div>
+
+                        <div class="glass-card p-8 rounded-2xl hover:border-blue-500 transition-all group">
+                            <h4 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors" data-translate-key="proj5_title">Física e Computação</h4>
+                            <p class="text-sm font-medium text-gray-500 mb-4" data-translate-key="proj5_company">Pós-Graduação UFG</p>
+                            <p class="text-gray-600 leading-relaxed" data-translate-key="proj5_desc">Pesquisa focada em correlacionar sistemas fechados de senoides com padrões cardíacos.</p>
+                        </div>
+
+                         <div class="glass-card p-8 rounded-2xl hover:border-blue-500 transition-all group">
+                            <h4 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors" data-translate-key="proj6_title">Reabilitação Cardíaca</h4>
+                            <p class="text-sm font-medium text-gray-500 mb-4" data-translate-key="proj6_company">HGG e HC</p>
+                            <p class="text-gray-600 leading-relaxed" data-translate-key="proj6_desc">Pesquisa com humanos focada na reabilitação cardíaca e análise de desfechos clínicos.</p>
+                        </div>
+                        
+                        <div class="glass-card p-8 rounded-2xl hover:border-blue-500 transition-all group">
+                            <h4 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors" data-translate-key="proj4_title">Bolsista PIBIC/UFG</h4>
+                            <p class="text-sm font-medium text-gray-500 mb-4" data-translate-key="proj4_company">Fisiologia Cardiovascular</p>
+                            <p class="text-gray-600 leading-relaxed" data-translate-key="proj4_desc">Investigação de alterações cardiovasculares experimentais. Experiência em pesquisa e manuseio.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- RECOGNITION -->
+                <section id="reconhecimentos" class="py-24 border-t border-gray-100">
+                    <div class="reveal bg-gradient-to-br from-amber-50 to-orange-50 border border-amber-100 p-10 rounded-2xl">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4 flex items-center gap-3">
+                            <span class="text-amber-500"><i class="fas fa-trophy fa-lg"></i></span> 
+                            <span data-translate-key="rec1_title">Dupla Menção Honrosa</span>
+                        </h3>
+                        <p class="text-lg text-gray-700 leading-relaxed" data-translate-key="rec1_desc">
+                            Recebi duas menções honrosas como melhor trabalho na área de Ciências da Saúde na 30ª Semana do ICB/UFG por pesquisas sobre neuropatias autonômicas no diabetes mellitus tipo 2.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- FORMATION -->
+                <section id="formacao" class="py-24 border-t border-gray-100">
+                    <div class="mb-16 reveal">
+                        <h3 class="text-3xl font-bold text-gray-900 flex items-center gap-4">
+                            <span class="w-12 h-12 flex items-center justify-center bg-green-50 text-green-600 rounded-xl"><i class="fas fa-graduation-cap"></i></span>
+                            <span data-translate-key="formation_title">Formação Complementar</span>
+                        </h3>
+                    </div>
+                    
+                    <div class="reveal glass-card p-10 rounded-2xl">
+                        <ul class="space-y-6 text-gray-700 text-lg" data-translate-key="formation_list">
+                             <!-- Filled by JS -->
                         </ul>
                     </div>
                 </section>
                 
-                <!-- FUTURE PLANS SECTION -->
-                <section id="futuro" class="py-24 md:py-32">
-                    <h3 class="text-3xl md:text-4xl font-bold scroll-animate flex items-center gap-3" data-translate-key="future_title"><i class="fas fa-rocket text-blue-600"></i> Planos Futuros</h3>
-                    <div class="section-divider scroll-animate w-20 bg-blue-600"></div>
-                    <div class="section-card scroll-animate">
-                        <h4 class="text-xl font-bold" data-translate-key="future_subtitle">Aprofundamento em Computação Quântica</h4>
-                        <p class="mt-4 text-lg" data-translate-key="future_desc">A busca pelo conhecimento é contínua. Meu próximo grande passo é uma pós-graduação em Computação Quântica, explorando como seus princípios podem revolucionar a modelagem de sistemas biológicos e o desenvolvimento de novos fármacos, levando a medicina a uma nova fronteira.</p>
+                <!-- FUTURE PLANS -->
+                <section id="futuro" class="py-24 border-t border-gray-100">
+                     <div class="mb-16 reveal">
+                        <h3 class="text-3xl font-bold text-gray-900 flex items-center gap-4">
+                            <span class="w-12 h-12 flex items-center justify-center bg-indigo-50 text-indigo-600 rounded-xl"><i class="fas fa-rocket"></i></span>
+                            <span data-translate-key="future_title">Planos Futuros</span>
+                        </h3>
+                    </div>
+                    <div class="reveal bg-indigo-50/50 p-10 rounded-2xl border border-indigo-100">
+                        <h4 class="text-2xl font-bold text-gray-900 mb-4" data-translate-key="future_subtitle">Computação Quântica</h4>
+                        <p class="text-lg text-gray-700 leading-relaxed" data-translate-key="future_desc">Meu próximo grande passo é uma pós-graduação em Computação Quântica, explorando como seus princípios podem revolucionar a modelagem de sistemas biológicos e o desenvolvimento de novos fármacos.</p>
                     </div>
                 </section>
 
-                <!-- CONTACT SECTION -->
-                <section id="contato" class="py-24 md:py-32">
-                    <h3 class="text-3xl md:text-4xl font-bold scroll-animate flex items-center gap-3" data-translate-key="contact_title"><i class="fa-solid fa-inbox text-amber-500"></i>Entre em Contato</h3>
-                    <div class="section-divider scroll-animate w-20" style="background-color: var(--yellow-accent);"></div>
-                    <p class="text-lg mb-8 scroll-animate" data-translate-key="contact_subtitle">Vamos nos conectar! Sinta-se à vontade para me contatar por qualquer um destes canais.</p>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
-                        <a href="https://www.linkedin.com/in/mateusalexandregamacorreia/" target="_blank" class="section-card flex items-center p-4 rounded-lg transition-all duration-300 scroll-animate"><i class="fab fa-linkedin fa-2x text-blue-600"></i><div class="ml-4 break-words"><p class="font-semibold">LinkedIn</p><p class="text-slate-500">/in/mateusalexandregamacorreia</p></div></a>
-                        <a href="https://github.com/icbmmateus16" target="_blank" class="section-card flex items-center p-4 rounded-lg transition-all duration-300 scroll-animate"><i class="fab fa-github fa-2x"></i><div class="ml-4"><p class="font-semibold">GitHub</p><p class="text-slate-500">@icbmmateus16</p></div></a>
-                        <a href="http://lattes.cnpq.br/9643377843478903" target="_blank" class="section-card flex items-center p-4 rounded-lg transition-all duration-300 scroll-animate"><i class="fas fa-graduation-cap fa-2x text-green-600"></i><div class="ml-4"><p class="font-semibold">Lattes</p><p class="text-slate-500" data-translate-key="contact_lattes">Currículo Acadêmico</p></div></a>
-                        <a href="mailto:icbmmateus@gmail.com" class="section-card flex items-center p-4 rounded-lg transition-all duration-300 scroll-animate"><i class="fas fa-envelope fa-2x text-red-500"></i><div class="ml-4"><p class="font-semibold">Email</p><p class="text-slate-500">icbmmateus@gmail.com</p></div></a>
+                <!-- CONTACT -->
+                <section id="contato" class="py-24 border-t border-gray-100">
+                    <div class="mb-16 reveal">
+                        <h3 class="text-3xl font-bold text-gray-900 flex items-center gap-4">
+                            <span class="w-12 h-12 flex items-center justify-center bg-red-50 text-red-500 rounded-xl"><i class="fas fa-envelope"></i></span>
+                            <span data-translate-key="contact_title">Contato</span>
+                        </h3>
+                        <p class="mt-4 text-gray-500 text-lg" data-translate-key="contact_subtitle">Vamos nos conectar! Sinta-se à vontade para me contatar.</p>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 reveal">
+                        <a href="https://www.linkedin.com/in/mateusalexandregamacorreia/" target="_blank" class="glass-card p-8 rounded-2xl flex flex-col items-center justify-center gap-4 hover:bg-blue-50 transition-colors group text-center">
+                            <i class="fab fa-linkedin fa-2x text-blue-600 group-hover:scale-110 transition-transform"></i>
+                            <span class="font-bold text-gray-800">LinkedIn</span>
+                        </a>
+                        <a href="https://github.com/icbmmateus16" target="_blank" class="glass-card p-8 rounded-2xl flex flex-col items-center justify-center gap-4 hover:bg-gray-50 transition-colors group text-center">
+                            <i class="fab fa-github fa-2x text-gray-800 group-hover:scale-110 transition-transform"></i>
+                            <span class="font-bold text-gray-800">GitHub</span>
+                        </a>
+                        <a href="http://lattes.cnpq.br/9643377843478903" target="_blank" class="glass-card p-8 rounded-2xl flex flex-col items-center justify-center gap-4 hover:bg-green-50 transition-colors group text-center">
+                            <i class="fas fa-graduation-cap fa-2x text-green-600 group-hover:scale-110 transition-transform"></i>
+                            <span class="font-bold text-gray-800" data-translate-key="contact_lattes">Lattes</span>
+                        </a>
+                        <a href="mailto:icbmmateus@gmail.com" class="glass-card p-8 rounded-2xl flex flex-col items-center justify-center gap-4 hover:bg-red-50 transition-colors group text-center">
+                            <i class="fas fa-envelope fa-2x text-red-500 group-hover:scale-110 transition-transform"></i>
+                            <span class="font-bold text-gray-800">Email</span>
+                        </a>
                     </div>
                 </section>
 
-                 <footer class="text-center mt-12 py-8 border-t" style="border-color: var(--border-color);">
-                     <p class="text-sm" style="color: var(--text-secondary);" data-translate-key="footer_text">Criado por Mateus Correia</p>
-                 </footer>
+                <footer class="mt-24 py-12 text-center border-t border-gray-100">
+                    <p class="text-sm text-gray-400 font-medium" data-translate-key="footer_text">Criado por Mateus Correia</p>
+                </footer>
             </div>
         </main>
     </div>
-    
+
+    <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            /* === TRANSLATIONS DATA === */
+            const translations = {
+                 pt: {
+                    nav_home: "Início", nav_about: "Sobre Mim", nav_vision: "Visão", nav_experience: "Experiência", nav_projects: "Projetos", nav_recognitions: "Reconhecimentos", nav_formation: "Formação", nav_future: "Futuro", nav_contact: "Contato", nav_cv: "Meu CV",
+                    home_title_prefix: "Mateus Correia é um",
+                    typing_words: ["Especialista em IA.", "Pesquisador Biomédico.", "Cientista de Dados."],
+                    home_subtitle: "Conectando Engenharia Biomédica e Visão Computacional para criar soluções robustas e inovadoras que resolvem desafios complexos.",
+                    home_button: "Conheça-me",
+                    nav_about: "Sobre Mim",
+                    about_p1_terminal: "Com uma base sólida em <span class='text-accent font-bold'>Biomedicina (UFG)</span> e pós-graduado em <span class='text-accent font-bold'>Inteligência Artificial & Big Data (UTFPR)</span>, atualmente estou aprofundando meus conhecimentos com uma graduação em <span class='text-accent font-bold'>Inteligência Artificial e Ciência de Dados</span> na Universidade CIMATEC. A universidade abriga o <span class='text-accent font-bold'>Latin America Quantum Computing Center (LAQCC)</span>, o primeiro centro de computação quântica do Brasil, em parceria com a empresa francesa Atos. Minha carreira é dedicada a construir pontes entre a ciência e a tecnologia, aplicando <span class='text-blue-400 font-bold'>Python</span>, <span class='text-blue-400 font-bold'>R</span>, <span class='text-blue-400 font-bold'>Machine Learning</span> e <span class='text-blue-400 font-bold'>Redes Neurais</span> para transformar dados complexos em avanços significativos, com especial interesse no setor da saúde.",
+                    terminal_prompt_message: "Clique para executar...",
+                    vision_title: "Sinergia: Saúde & Tecnologia",
+                    vision_subtitle: "A minha jornada começou na saúde, com pesquisas em neurociência. Foi lá que a faísca acendeu: e se pudéssemos replicar o cérebro artificialmente? Essa pergunta uniu os meus dois mundos. Hoje, aplico meu conhecimento para criar sistemas de IA que resolvem problemas complexos em diversas áreas, com um foco especial e apaixonado pelo setor da saúde.",
+                    vision_innovation: "INOVAÇÃO",
+                    experience_title: "Experiência Profissional",
+                    exp_natal_title: "Supervisor Técnico", exp_natal_company: "Natal do Bem 2025 (2025)", exp_natal_desc: "Atuando na supervisão técnica do maior natal gratuito do Brasil, uma iniciativa do Governo de Goiás, Goiás Social e OVG, garantindo a excelência operacional e tecnológica das atrações.",
+                    exp1_title: "Instrutor de Nível Superior em IA e Cyber Segurança", exp1_company: "Organização das Voluntárias de Goiás (OVG) (Presente)", exp1_desc: "Atuando no Centro da Juventude “Tecendo o Futuro”, lidero iniciativas tecnológicas e coordeno ações para a formação de jovens em competências digitais e inovação, capacitando a próxima geração de talentos.",
+                    exp2_title: "Desenvolvedor de Projetos de Visão Computacional", exp2_company: "Eventos de Grande Porte (2 Anos)", exp2_desc: "Produzi soluções de visão computacional escaláveis para eventos de massa, como na edição do Totus Tuus no estádio Serra Dourada, atendendo um público de mais de 60 mil pessoas e garantindo performance e confiabilidade.",
+                    exp3_title: "Desenvolvedor de Projetos de Tecnologia", exp3_company: "Paróquia Nossa Senhora da Assunção (5 Anos)", exp3_desc: "Desenvolvi e implementei múltiplos projetos para uma instituição de grande visibilidade e demanda, incluindo totens interativos e sistemas autônomos para transmissão ao vivo, otimizando a comunicação e o alcance.",
+                    projects_title: "Pesquisa & Projetos",
+                    proj_crianca_title: "Projeto Startups Sociais", proj_crianca_company: "Edital Criança Esperança (Submissão)", proj_crianca_desc: "Submissão de projeto para o Criança Esperança com o objetivo de desenvolver soluções com IA para a população do setor Novo Mundo em Goiânia, criando startups com adolescentes em situação de vulnerabilidade.",
+                    proj1_title: "Projeto de Engenharia Biomédica", proj1_company: "Colaboração com estudantes de IA (INF - UFG)", proj1_desc: "Atualmente em fase inicial, este projeto visa criar uma solução de hardware e software inovadora na intersecção da saúde e tecnologia, com foco na aquisição e análise inteligente de sinais biológicos.",
+                    proj2_title: "Pesquisa Interdisciplinar Internacional", proj2_company: "Parceria Laboratory of Cheminformatics (UFG) & Museu de História Natural da França", proj2_desc: "Convidado a colaborar em um projeto de pesquisa de alto impacto, vinculado ao Programa de Pós-Graduação em Farmácia da UFG, para aplicar tecnologia na resolução de desafios complexos no campo da saúde.",
+                    proj5_title: "Convite para Pesquisa em Física e Computação", proj5_company: "Pós-Graduação (UFG)", proj5_desc: "Após a graduação, recebi um convite de um professor da física e computação para participar de uma pesquisa focada em correlacionar um sistema fechado de senoides com os padrões senoidais do coração, unindo física de sistemas e fisiologia cardíaca.",
+                    proj6_title: "Pesquisa Clínica em Reabilitação Cardíaca", proj6_company: "Núcleo de Pesquisa em Reabilitação Cardíaca (HGG e HC)", proj6_desc: "Participei de um projeto de pesquisa com humanos no Hospital Geral de Goiânia (HGG) e no Hospital das Clínicas (HC), focado na reabilitação cardíaca e na análise de desfechos clínicos em pacientes.",
+                    proj7_title: "Colaboração em Pesquisa com a Física", proj7_company: "Interface: Fisiologia e Física (UFG)", proj7_desc: "Durante a iniciação científica, fui convidado para uma colaboração com a física para testar compostos químicos no tratamento de hipertensão com causa neuronal, aplicando princípios interdisciplinares na pesquisa.",
+                    proj4_title: "Bolsista de Iniciação Científica (PIBIC/UFG)", proj4_company: "Laboratório Integrado de Fisiologia Cardiovascular e Neurológica", proj4_desc: "Investiguei as alterações cardiovasculares na prole de ratas submetidas ao bloqueio do receptor Mas. Adquiri experiência em pesquisa experimental, manuseio de animais e técnicas de fisiologia cardiovascular.",
+                    proj3_title: "Iniciação Científica Voluntária (PIVIC/UFG)", proj3_company: "Centro de Pesquisa em Neurociência e Fisiologia Cardiovascular", proj3_desc: "Avaliei os efeitos do treinamento físico na modulação autonômica e estresse oxidativo em ratos hipertensos, analisando adaptações cardiovasculares e benefícios para a saúde.",
+                    rec1_title: "Dupla Menção Honrosa na 30ª Semana do ICB/UFG", rec1_desc: "Recebi duas menções honrosas como melhor trabalho na área de Ciências da Saúde por pesquisas sobre neuropatias autonômicas no diabetes mellitus tipo 2, utilizando a variabilidade da frequência cardíaca como ferramenta de análise.",
+                    formation_title: "Formação Complementar e Eventos",
+                    formation_list: "<li class='mb-2 flex items-start'><i class='fas fa-check text-green-500 mt-1 mr-2'></i> Voluntário no Robótica 2024 - Maior evento de robótica da América Latina.</li><li class='mb-2 flex items-start'><i class='fas fa-check text-green-500 mt-1 mr-2'></i> Brasil Global Summit - Evento com tendências tecnológicas nacionais e internacionais.</li><li class='mb-2 flex items-start'><i class='fas fa-check text-green-500 mt-1 mr-2'></i> 1° Ideathon Lab Soluções Inovadores de Prototipagem para a Saúde – 2020.</li><li class='mb-2 flex items-start'><i class='fas fa-check text-green-500 mt-1 mr-2'></i> XXIV e XXIII Simpósio Brasileiro de Fisiologia Cardiovascular.</li><li class='mb-2 flex items-start'><i class='fas fa-check text-green-500 mt-1 mr-2'></i> Minicurso: Variabilidade da Frequência Cardíaca (30ª Semana do ICB).</li><li class='mb-2 flex items-start'><i class='fas fa-check text-green-500 mt-1 mr-2'></i> Treinamento: Aspectos Metodológicos de Antropometria e Recordatório Nutricional (20 horas).</li><li class='mb-2 flex items-start'><i class='fas fa-check text-green-500 mt-1 mr-2'></i> 15º CONPEEX - Congresso de Pesquisa, Ensino e Extensão – 2018.</li><li class='flex items-start'><i class='fas fa-check text-green-500 mt-1 mr-2'></i> ...e diversas outras participações.</li>",
+                    future_title: "Planos Futuros",
+                    future_subtitle: "Aprofundamento em Computação Quântica",
+                    future_desc: "A busca pelo conhecimento é contínua. Meu próximo grande passo é uma pós-graduação em Computação Quântica, explorando como seus princípios podem revolucionar a modelagem de sistemas biológicos e o desenvolvimento de novos fármacos, levando a medicina a uma nova fronteira.",
+                    contact_title: "Entre em Contato", contact_subtitle: "Vamos nos conectar! Sinta-se à vontade para me contatar por qualquer um destes canais.",
+                    contact_lattes: "Currículo Acadêmico",
+                    footer_text: "Criado por Mateus Correia"
+                },
+                en: {
+                    nav_home: "Home", nav_about: "About Me", nav_vision: "Vision", nav_experience: "Experience", nav_projects: "Projects", nav_recognitions: "Awards", nav_formation: "Education", nav_future: "Future", nav_contact: "Contact", nav_cv: "My CV",
+                    home_title_prefix: "Mateus Correia is an",
+                    typing_words: ["AI Specialist.", "Biomedical Researcher.", "Data Scientist."],
+                    home_subtitle: "Connecting Biomedical Engineering and Computer Vision to create robust and innovative solutions that solve complex challenges.",
+                    home_button: "Get to Know Me",
+                    nav_about: "About Me",
+                    about_p1_terminal: "With a solid foundation in <span class='text-accent font-bold'>Biomedicine (UFG)</span> and a postgraduate degree in <span class='text-accent font-bold'>Artificial Intelligence & Big Data (UTFPR)</span>, I am currently deepening my knowledge with a degree in <span class='text-accent font-bold'>Artificial Intelligence and Data Science</span> at CIMATEC University. The university hosts the <span class='text-accent font-bold'>Latin America Quantum Computing Center (LAQCC)</span>, Brazil's first quantum computing center, in partnership with the French company Atos. My career is dedicated to building bridges between science and technology, applying <span class='text-blue-400 font-bold'>Python</span>, <span class='text-blue-400 font-bold'>R</span>, <span class='text-blue-400 font-bold'>Machine Learning</span>, and <span class='text-blue-400 font-bold'>Neural Networks</span> to transform complex data into significant advancements, with a special interest in the healthcare sector.",
+                    terminal_prompt_message: "Click to run...",
+                    vision_title: "The Synergy: Health & Technology",
+                    vision_subtitle: "My journey began in healthcare, with research in neuroscience. That's where the spark was lit: what if we could replicate the brain artificially? This question united my two worlds. Today, I apply my knowledge to create AI systems that solve complex problems in various fields, with a special and passionate focus on the healthcare sector.",
+                    vision_innovation: "INNOVATION",
+                    experience_title: "Professional Experience",
+                    exp_natal_title: "Technical Supervisor", exp_natal_company: "Natal do Bem 2025 (2025)", exp_natal_desc: "Acting as technical supervisor for Brazil's largest free Christmas event, an initiative of the Government of Goiás, Goiás Social, and OVG, ensuring operational and technological excellence of the attractions.",
+                    exp1_title: "Higher Education Instructor in AI and Cyber Security", exp1_company: "Organization of Volunteers of Goiás (OVG) (Present)", exp1_desc: "Working at the 'Tecendo o Futuro' Youth Center, I lead technological initiatives and coordinate actions to train young people in digital skills and innovation, empowering the next generation of talent.",
+                    exp2_title: "Computer Vision Project Developer", exp2_company: "Large-Scale Events (2 Years)", exp2_desc: "I produced scalable computer vision solutions for mass events, such as the Totus Tuus edition at the Serra Dourada stadium, serving an audience of over 60,000 people and ensuring performance and reliability.",
+                    exp3_title: "Technology Project Developer", exp3_company: "Nossa Senhora da Assunção Parish (5 Years)", exp3_desc: "I developed and implemented multiple projects for an institution with high visibility and demand, including interactive totems and autonomous systems for live broadcasting, optimizing communication and reach.",
+                    projects_title: "Research & Projects",
+                    proj_crianca_title: "Social Startups Project", proj_crianca_company: "Criança Esperança Grant (Submission)", proj_crianca_desc: "Project submission to Criança Esperança aimed at developing AI solutions for the population of the Novo Mundo sector in Goiânia, creating startups with vulnerable adolescents.",
+                    proj1_title: "Biomedical Engineering Project", proj1_company: "Collaboration with AI students (INF - UFG)", proj1_desc: "Currently in its initial phase, this project aims to create an innovative hardware and software solution at the intersection of health and technology, focusing on the intelligent acquisition and analysis of biological signals.",
+                    proj2_title: "International Interdisciplinary Research", proj2_company: "Partnership Laboratory of Cheminformatics (UFG) & Natural History Museum of France", proj2_desc: "Invited to collaborate on a high-impact research project, linked to the UFG's Postgraduate Program in Pharmacy, to apply technology to solve complex challenges in the health field.",
+                    proj5_title: "Invitation for Research in Physics and Computation", proj5_company: "Postgraduate Studies (UFG)", proj5_desc: "After graduation, I received an invitation from a professor of physics and computation to participate in research focused on correlating a closed system of sinusoids with the heart's sinusoidal patterns, merging systems physics and cardiac physiology.",
+                    proj6_title: "Clinical Research in Cardiac Rehabilitation", proj6_company: "Cardiac Rehabilitation Research Nucleus (HGG and HC)", proj6_desc: "I participated in a research project with human subjects at the General Hospital of Goiânia (HGG) and the Clinical Hospital (HC), focusing on cardiac rehabilitation and the analysis of clinical outcomes in patients.",
+                    proj7_title: "Research Collaboration with Physics", proj7_company: "Interface: Physiology and Physics (UFG)", proj7_desc: "During my scientific initiation, I was invited to a collaboration with the physics department to test chemical compounds for treating neurally-caused hypertension, applying interdisciplinary principles in research.",
+                    proj4_title: "Scientific Initiation Fellow (PIBIC/UFG)", proj4_company: "Integrated Laboratory of Cardiovascular and Neurological Physiology", proj4_desc: "I investigated cardiovascular changes in the offspring of rats subjected to the blockade of the Mas receptor, gaining experience in experimental research, animal handling, and cardiovascular physiology techniques.",
+                    proj3_title: "Voluntary Scientific Initiation (PIVIC/UFG)", proj3_company: "Research Center in Neuroscience and Cardiovascular Physiology", proj3_desc: "I evaluated the effects of physical training on autonomic modulation and oxidative stress in hypertensive rats, analyzing cardiovascular adaptations and health benefits.",
+                    rec1_title: "Double Honorable Mention at the 30th ICB/UFG Week", rec1_desc: "Received two honorable mentions for best work in the Health Sciences area for research on autonomic neuropathies in type 2 diabetes mellitus, using heart rate variability as an analysis tool.",
+                    formation_title: "Continuing Education and Events",
+                    formation_list: "<li class='mb-2 flex items-start'><i class='fas fa-check text-green-500 mt-1 mr-2'></i> Volunteer at Robótica 2024 - Latin America's largest robotics event.</li><li class='mb-2 flex items-start'><i class='fas fa-check text-green-500 mt-1 mr-2'></i> Brasil Global Summit - Event on national and international technological trends.</li><li class='mb-2 flex items-start'><i class='fas fa-check text-green-500 mt-1 mr-2'></i> 1st Ideathon Lab Innovative Prototyping Solutions for Health – 2020.</li><li class='mb-2 flex items-start'><i class='fas fa-check text-green-500 mt-1 mr-2'></i> XXIV and XXIII Brazilian Symposium on Cardiovascular Physiology.</li><li class='mb-2 flex items-start'><i class='fas fa-check text-green-500 mt-1 mr-2'></i> Short Course: Heart Rate Variability (30th ICB Week).</li><li class='mb-2 flex items-start'><i class='fas fa-check text-green-500 mt-1 mr-2'></i> Training: Methodological Aspects of Anthropometry and Nutritional Recall (20 hours).</li><li class='mb-2 flex items-start'><i class='fas fa-check text-green-500 mt-1 mr-2'></i> 15th CONPEEX - Congress of Research, Teaching, and Extension – 2018.</li><li class='flex items-start'><i class='fas fa-check text-green-500 mt-1 mr-2'></i> ...and many other participations.</li>",
+                    future_title: "Future Plans",
+                    future_subtitle: "Deepening Knowledge in Quantum Computing",
+                    future_desc: "The pursuit of knowledge is continuous. My next big step is a postgraduate degree in Quantum Computing, exploring how its principles can revolutionize the modeling of biological systems and the development of new drugs, taking medicine to a new frontier.",
+                    contact_title: "Get in Touch", contact_subtitle: "Let's connect! Feel free to contact me through any of these channels.",
+                    contact_lattes: "Academic Curriculum",
+                    footer_text: "Created by Mateus Correia"
+                },
+                 es: {
+                    nav_home: "Inicio", nav_about: "Sobre Mí", nav_vision: "Visión", nav_experience: "Experiencia", nav_projects: "Proyectos", nav_recognitions: "Reconocimientos", nav_formation: "Formación", nav_future: "Futuro", nav_contact: "Contacto", nav_cv: "Mi CV",
+                    home_title_prefix: "Mateus Correia es un",
+                    typing_words: ["Especialista en IA.", "Investigador Biomédico.", "Científico de Datos."],
+                    home_subtitle: "Conectando Ingeniería Biomédica y Visión por Computadora para crear soluciones robustas e innovadoras que resuelven desafíos complejos.",
+                    home_button: "Conóceme",
+                    nav_about: "Sobre Mí",
+                    about_p1_terminal: "Con una base sólida en <span class='text-accent font-bold'>Biomedicina (UFG)</span> y un posgrado en <span class='text-accent font-bold'>Inteligencia Artificial & Big Data (UTFPR)</span>, actualmente estoy profundizando mis conocimientos con una carrera en <span class='text-accent font-bold'>Inteligencia Artificial y Ciencia de Datos</span> en la Universidad CIMATEC. La universidad alberga el <span class='text-accent font-bold'>Latin America Quantum Computing Center (LAQCC)</span>, el primer centro de computación cuántica de Brasil, en asociación con la empresa francesa Atos. Mi carrera está dedicada a construir puentes entre la ciencia y la tecnología, aplicando <span class='text-blue-400 font-bold'>Python</span>, <span class='text-blue-400 font-bold'>R</span>, <span class='text-blue-400 font-bold'>Machine Learning</span> y <span class='text-blue-400 font-bold'>Redes Neuronales</span> para transformar dados complejos en avances significativos, con un interés especial en el sector de la salud.",
+                    terminal_prompt_message: "Clic para ejecutar...",
+                    vision_title: "La Sinergia: Salud & Tecnología",
+                    vision_subtitle: "Mi viaje comenzó en la salud, con investigaciones en neurociencia. Fue allí donde se encendió la chispa: ¿y si pudiéramos replicar el cerebro artificialmente? Esta pregunta unió mis dos mundos. Hoy, aplico mi conocimiento para crear sistemas de IA que resuelven problemas complejos en diversas áreas, con un enfoque especial y apasionado en el sector de la salud.",
+                    vision_innovation: "INNOVACIÓN",
+                    experience_title: "Experiencia Profesional",
+                    exp_natal_title: "Supervisor Técnico", exp_natal_company: "Natal do Bem 2025 (2025)", exp_natal_desc: "Actuando como supervisor técnico del evento navideño gratuito más grande de Brasil, una iniciativa del Gobierno de Goiás, Goiás Social y OVG, garantizando la excelencia operativa y tecnológica de las atracciones.",
+                    exp1_title: "Instructor de Nivel Superior en IA y Ciberseguridad", exp1_company: "Organización de Voluntarios de Goiás (OVG) (Presente)", exp1_desc: "Trabajando en el Centro Juvenil 'Tecendo o Futuro', lidero iniciativas tecnológicas y coordino acciones para capacitar a jóvenes en competencias digitales e innovación, empoderando a la próxima generación de talentos.",
+                    exp2_title: "Desarrollador de Proyectos de Visión por Computadora", exp2_company: "Eventos a Gran Escala (2 Años)", exp2_desc: "Produje soluciones escalables de visión por computadora para eventos masivos, como en la edición de Totus Tuus en el estadio Serra Dourada, atendiendo a una audiencia de más de 60,000 personas y garantizando rendimiento y confiabilidad.",
+                    exp3_title: "Desarrollador de Proyectos de Tecnología", exp3_company: "Parroquia Nossa Senhora da Assunção (5 Años)", exp3_desc: "Desarrollé e implementé múltiples proyectos para una institución de gran visibilidad y demanda, incluyendo tótems interactivos y sistemas autónomos para transmisiones en vivo, optimizando la comunicación y el alcance.",
+                    projects_title: "Investigación & Proyectos",
+                    proj_crianca_title: "Proyecto Startups Sociales", proj_crianca_company: "Subvención Criança Esperança (Presentación)", proj_crianca_desc: "Presentación de proyecto para Criança Esperança con el objetivo de desarrollar soluciones con IA para la población del sector Novo Mundo en Goiânia, creando startups con adolescentes en situación de vulnerabilidade.",
+                    proj1_title: "Proyecto de Ingeniería Biomédica", proj1_company: "Colaboración con estudiantes de IA (INF - UFG)", proj1_desc: "Actualmente en su fase inicial, este proyecto busca crear una solución innovadora de hardware y software en la intersección de la salud y la tecnología, centrándose en la adquisición y análisis inteligente de señales biológicas.",
+                    proj2_title: "Investigación Interdisciplinaria Internacional", proj2_company: "Asociación Laboratory of Cheminformatics (UFG) & Museo de Historia Natural de Francia", proj2_desc: "Invitado a colaborar en un proyecto de investigación de alto impacto, vinculado al Programa de Posgrado en Farmacia de la UFG, para aplicar tecnología en la resolución de desafíos complejos en el campo de la salud.",
+                    proj5_title: "Invitación a Investigación en Física y Computación", proj5_company: "Postgrado (UFG)", proj5_desc: "Después de graduarme, recibí una invitación de un profesor de física y computación para participar en una investigación centrada en correlacionar un sistema cerrado de sinusoides con los patrones sinusoidales del corazón, fusionando la física de sistemas y la fisiología cardíaca.",
+                    proj6_title: "Investigación Clínica en Rehabilitación Cardíaca", proj6_company: "Núcleo de Investigación en Rehabilitación Cardíaca (HGG y HC)", proj6_desc: "Participé en un proyecto de investigación con humanos en el Hospital General de Goiânia (HGG) y el Hospital de Clínicas (HC), enfocado en la rehabilitación cardíaca y el análisis de resultados clínicos en pacientes.",
+                    proj7_title: "Colaboración de Investigación con la Física", proj7_company: "Interfaz: Fisiologia y Física (UFG)", proj7_desc: "Durante mi iniciación científica, fui invitado a una colaboración con el departamento de física para probar compuestos químicos para el tratamiento de la hipertensión de causa neuronal, aplicando principios interdisciplinarios en la investigación.",
+                    proj4_title: "Becario de Iniciación Científica (PIBIC/UFG)", proj4_company: "Laboratorio Integrado de Fisiología Cardiovascular y Neurológica", proj4_desc: "Investigué los cambios cardiovasculares en la descendencia de ratas sometidas al bloqueo del receptor Mas. Adquirí experiencia en investigación experimental, manejo de animales y técnicas de fisiología cardiovascular.",
+                    proj3_title: "Iniciación Científica Voluntaria (PIVIC/UFG)", proj3_company: "Centro de Investigación en Neurociencia y Fisiología Cardiovascular", proj3_desc: "Evalué los efectos del entrenamiento físico en la modulación autonômica y el estrés oxidativo en ratas hipertensas, analizando adaptaciones cardiovasculares y beneficios para la salud.",
+                    rec1_title: "Doble Mención de Honor en la 30ª Semana del ICB/UFG", rec1_desc: "Recibí dos menciones de honor como mejor trabajo en el área de Ciencias de la Salud por investigaciones sobre neuropatías autonómicas en la diabetes mellitus tipo 2, utilizando la variabilidad de la frecuencia cardíaca como herramienta de análisis.",
+                    formation_title: "Formación Complementaria y Eventos",
+                    formation_list: "<li class='mb-2 flex items-start'><i class='fas fa-check text-green-500 mt-1 mr-2'></i> Voluntario en Robótica 2024 - El mayor evento de robótica de América Latina.</li><li class='mb-2 flex items-start'><i class='fas fa-check text-green-500 mt-1 mr-2'></i> Brasil Global Summit - Evento sobre tendencias tecnológicas nacionales e internacionales.</li><li class='mb-2 flex items-start'><i class='fas fa-check text-green-500 mt-1 mr-2'></i> 1er Ideathon Lab Soluciones Innovadoras de Prototipado para la Salud – 2020.</li><li class='mb-2 flex items-start'><i class='fas fa-check text-green-500 mt-1 mr-2'></i> XXIV y XXIII Simposio Brasileño de Fisiología Cardiovascular.</li><li class='mb-2 flex items-start'><i class='fas fa-check text-green-500 mt-1 mr-2'></i> Minicurso: Variabilidad de la Frecuencia Cardíaca (30ª Semana del ICB).</li><li class='mb-2 flex items-start'><i class='fas fa-check text-green-500 mt-1 mr-2'></i> Capacitación: Aspectos Metodológicos de Antropometría y Recordatorio Nutricional (20 horas).</li><li class='mb-2 flex items-start'><i class='fas fa-check text-green-500 mt-1 mr-2'></i> 15º CONPEEX - Congreso de Investigación, Enseñanza y Extensión – 2018.</li><li class='flex items-start'><i class='fas fa-check text-green-500 mt-1 mr-2'></i> ...y varias otras participaciones.</li>",
+                    future_title: "Planes Futuros",
+                    future_subtitle: "Profundización en Computación Cuántica",
+                    future_desc: "La búsqueda del conocimiento es continua. Mi próximo gran paso es un posgrado en Computación Cuántica, explorando cómo sus principios pueden revolucionar el modelado de sistemas biológicos y el desarrollo de nuevos fármacos, llevando la medicina a una nueva frontera.",
+                    contact_title: "Contacto", contact_subtitle: "¡Conectemos! No dudes en contactarme a través de cualquiera de estos canales.",
+                    contact_lattes: "Currículum Académico",
+                    footer_text: "Creado por Mateus Correia"
+                }
+            };
 
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const translations = {
-            pt: {
-                nav_home: "Início", nav_about: "Sobre Mim", nav_vision: "Visão", nav_experience: "Experiência", nav_projects: "Projetos", nav_recognitions: "Reconhecimentos", nav_formation: "Formação", nav_future: "Futuro", nav_contact: "Contato", nav_cv: "Meu CV",
-                home_title_prefix: "Mateus Correia é um",
-                typing_words: ["Especialista em IA.", "Pesquisador Biomédico.", "Cientista de Dados."],
-                home_subtitle: "Conectando Engenharia Biomédica e Visão Computacional para criar soluções robustas e inovadoras que resolvem desafios complexos.",
-                home_button: "Conheça-me",
-                about_title: "<i class='fas fa-terminal text-amber-500'></i> Sobre Mim",
-                about_p1_terminal: "Com uma base sólida em <span class='terminal-keyword'>Biomedicina (UFG)</span> e pós-graduado em <span class='terminal-keyword'>Inteligência Artificial & Big Data (UTFPR)</span>, atualmente estou aprofundando meus conhecimentos com uma graduação em <span class='terminal-keyword'>Inteligência Artificial e Ciência de Dados</span> na Universidade CIMATEC. A universidade abriga o <span class='terminal-keyword'>Latin America Quantum Computing Center (LAQCC)</span>, o primeiro centro de computação quântica do Brasil, em parceria com a empresa francesa Atos. Minha carreira é dedicada a construir pontes entre a ciência e a tecnologia, aplicando <span class='terminal-keyword'>Python</span>, <span class='terminal-keyword'>R</span>, <span class='terminal-keyword'>Machine Learning</span> e <span class='terminal-keyword'>Redes Neurais</span> para transformar dados complexos em avanços significativos, com especial interesse no setor da saúde.",
-                terminal_prompt_message: "Clique para executar...",
-                vision_title: "<i class='fas fa-brain text-blue-600'></i> A Sinergia: Saúde & Tecnologia",
-                vision_subtitle: "A minha jornada começou na saúde, com pesquisas em neurociência. Foi lá que a faísca acendeu: e se pudéssemos replicar o cérebro artificialmente? Essa pergunta uniu os meus dois mundos. Hoje, aplico meu conhecimento para criar sistemas de IA que resolvem problemas complexos em diversas áreas, com um foco especial e apaixonado pelo setor da saúde.",
-                vision_innovation: "INOVAÇÃO",
-                experience_title: "<i class='fa-solid fa-briefcase text-blue-600'></i>Experiência Profissional",
-                // NOVAS TRADUÇÕES
-                exp_natal_title: "Supervisor Técnico",
-                exp_natal_company: "Natal do Bem 2025",
-                exp_natal_desc: "Atuando na supervisão técnica do maior natal gratuito do Brasil, uma iniciativa do Governo de Goiás, Goiás Social e OVG, garantindo a excelência operacional e tecnológica das atrações.",
-                // FIM NOVAS TRADUÇÕES
-                exp1_title: "Instrutor de Nível Superior em IA e Cyber Segurança",
-                exp1_company: "Organização das Voluntárias de Goiás (OVG)",
-                exp1_desc: "Atuando no Centro da Juventude “Tecendo o Futuro”, lidero iniciativas tecnológicas e coordeno ações para a formação de jovens em competências digitais e inovação, capacitando a próxima geração de talentos.",
-                exp2_title: "Desenvolvedor de Projetos de Visão Computacional",
-                exp2_company: "Eventos de Grande Porte",
-                exp2_desc: "Produzi soluções de visão computacional escaláveis para eventos de massa, como na edição do Totus Tuus no estádio Serra Dourada, atendendo um público de mais de 60 mil pessoas e garantindo performance e confiabilidade.",
-                exp3_title: "Desenvolvedor de Projetos de Tecnologia",
-                exp3_company: "Paróquia Nossa Senhora da Assunção",
-                exp3_desc: "Desenvolvi e implementei múltiplos projetos para uma instituição de grande visibilidade e demanda, incluindo totens interativos e sistemas autônomos para transmissão ao vivo, otimizando a comunicação e o alcance.",
-                projects_title: "<i class='fa-solid fa-flask-vial text-amber-500'></i>Pesquisa & Projetos",
-                // NOVAS TRADUÇÕES
-                proj_crianca_title: "Projeto Startups Sociais",
-                proj_crianca_company: "Edital Criança Esperança <span class='text-sm ml-2'>(Submissão)</span>",
-                proj_crianca_desc: "Submissão de projeto para o Criança Esperança com o objetivo de desenvolver soluções com IA para a população do setor Novo Mundo em Goiânia, criando startups com adolescentes em situação de vulnerabilidade.",
-                // FIM NOVAS TRADUÇÕES
-                proj1_title: "Projeto de Engenharia Biomédica",
-                proj1_company: "Colaboração com estudantes de IA (INF - UFG)",
-                proj1_desc: "Atualmente em fase inicial, este projeto visa criar uma solução de hardware e software inovadora na intersecção da saúde e tecnologia, com foco na aquisição e análise inteligente de sinais biológicos.",
-                proj2_title: "Pesquisa Interdisciplinar Internacional",
-                proj2_company: "Parceria Laboratory of Cheminformatics (UFG) & Museu de História Natural da França",
-                proj2_desc: "Convidado a colaborar em um projeto de pesquisa de alto impacto, vinculado ao Programa de Pós-Graduação em Farmácia da UFG, para aplicar tecnologia na resolução de desafios complexos no campo da saúde.",
-                proj3_title: "Iniciação Científica Voluntária (PIVIC/UFG)",
-                proj3_company: "Centro de Pesquisa em Neurociência e Fisiologia Cardiovascular",
-                proj3_desc: "Avaliei os efeitos do treinamento físico na modulação autonômica e estresse oxidativo em ratos hipertensos, analisando adaptações cardiovasculares e benefícios para a saúde.",
-                proj4_title: "Bolsista de Iniciação Científica (PIBIC/UFG)",
-                proj4_company: "Laboratório Integrado de Fisiologia Cardiovascular e Neurológica",
-                proj4_desc: "Investiguei as alterações cardiovasculares na prole de ratas submetidas ao bloqueio do receptor Mas. Adquiri experiência em pesquisa experimental, manuseio de animais e técnicas de fisiologia cardiovascular.",
-                proj5_title: "Convite para Pesquisa em Física e Computação",
-                proj5_company: "Pós-Graduação (UFG)",
-                proj5_desc: "Após a graduação, recebi um convite de um professor da física e computação para participar de uma pesquisa focada em correlacionar um sistema fechado de senoides com os padrões senoidais do coração, unindo física de sistemas e fisiologia cardíaca.",
-                proj6_title: "Pesquisa Clínica em Reabilitação Cardíaca",
-                proj6_company: "Núcleo de Pesquisa em Reabilitação Cardíaca (HGG e HC)",
-                proj6_desc: "Participei de um projeto de pesquisa com humanos no Hospital Geral de Goiânia (HGG) e no Hospital das Clínicas (HC), focado na reabilitação cardíaca e na análise de desfechos clínicos em pacientes.",
-                proj7_title: "Colaboração em Pesquisa com a Física",
-                proj7_company: "Interface: Fisiologia e Física (UFG)",
-                proj7_desc: "Durante a iniciação científica, fui convidado para uma colaboração com a física para testar compostos químicos no tratamento de hipertensão com causa neuronal, aplicando princípios interdisciplinares na pesquisa.",
-                recognitions_title: "<i class='fa-solid fa-award text-blue-600'></i>Reconhecimentos",
-                rec1_title: "Dupla Menção Honrosa na 30ª Semana do ICB/UFG",
-                rec1_desc: "Recebi duas menções honrosas como melhor trabalho na área de Ciências da Saúde por pesquisas sobre neuropatias autonômicas no diabetes mellitus tipo 2, utilizando a variabilidade da frequência cardíaca como ferramenta de análise.",
-                formation_title: "<i class='fa-solid fa-chalkboard-user text-amber-500'></i>Formação Complementar e Eventos",
-                formation_list: "<li>Voluntário no Robótica 2024 - Maior evento de robótica da América Latina.</li><li>Brasil Global Summit - Evento com tendências tecnológicas nacionais e internacionais.</li><li>1° Ideathon Lab Soluções Inovadores de Prototipagem para a Saúde – 2020.</li><li>XXIV e XXIII Simpósio Brasileiro de Fisiologia Cardiovascular.</li><li>Minicurso: Variabilidade da Frequência Cardíaca (30ª Semana do ICB).</li><li>Treinamento: Aspectos Metodológicos de Antropometria e Recordatório Nutricional (20 horas).</li><li>15º CONPEEX - Congresso de Pesquisa, Ensino e Extensão – 2018.</li><li>...e diversas outras participações.</li>",
-                future_title: "<i class='fas fa-rocket text-blue-600'></i> Planos Futuros",
-                future_subtitle: "Aprofundamento em Computação Quântica",
-                future_desc: "A busca pelo conhecimento é contínua. Meu próximo grande passo é uma pós-graduação em Computação Quântica, explorando como seus princípios podem revolucionar a modelagem de sistemas biológicos e o desenvolvimento de novos fármacos, levando a medicina a uma nova fronteira.",
-                contact_title: "<i class='fa-solid fa-inbox text-amber-500'></i>Entre em Contato",
-                contact_subtitle: "Vamos nos conectar! Sinta-se à vontade para me contatar por qualquer um destes canais.",
-                contact_lattes: "Currículo Acadêmico",
-                footer_text: "Criado por Mateus Correia"
-            },
-            en: {
-                nav_home: "Home", nav_about: "About Me", nav_vision: "Vision", nav_experience: "Experience", nav_projects: "Projects", nav_recognitions: "Awards", nav_formation: "Education", nav_future: "Future", nav_contact: "Contact", nav_cv: "My Resume",
-                home_title_prefix: "Mateus Correia is an",
-                typing_words: ["AI Specialist.", "Biomedical Researcher.", "Data Scientist."],
-                home_subtitle: "Connecting Biomedical Engineering and Computer Vision to create robust and innovative solutions that solve complex challenges.",
-                home_button: "Get to Know Me",
-                about_title: "<i class='fas fa-terminal text-amber-500'></i> About Me",
-                about_p1_terminal: "With a solid foundation in <span class='terminal-keyword'>Biomedicine (UFG)</span> and a postgraduate degree in <span class='terminal-keyword'>Artificial Intelligence & Big Data (UTFPR)</span>, I am currently deepening my knowledge with a degree in <span class='terminal-keyword'>Artificial Intelligence and Data Science</span> at CIMATEC University. The university hosts the <span class='terminal-keyword'>Latin America Quantum Computing Center (LAQCC)</span>, Brazil's first quantum computing center, in partnership with the French company Atos. My career is dedicated to building bridges between science and technology, applying <span class='terminal-keyword'>Python</span>, <span class='terminal-keyword'>R</span>, <span class='terminal-keyword'>Machine Learning</span>, and <span class='terminal-keyword'>Neural Networks</span> to transform complex data into significant advancements, with a special interest in the healthcare sector.",
-                terminal_prompt_message: "Click to run...",
-                vision_title: "<i class='fas fa-brain text-blue-600'></i> The Synergy: Health & Technology",
-                vision_subtitle: "My journey began in healthcare, with research in neuroscience. That's where the spark was lit: what if we could replicate the brain artificially? This question united my two worlds. Today, I apply my knowledge to create AI systems that solve complex problems in various fields, with a special and passionate focus on the healthcare sector.",
-                vision_innovation: "INNOVATION",
-                experience_title: "<i class='fa-solid fa-briefcase text-blue-600'></i>Professional Experience",
-                // NEW TRANSLATIONS
-                exp_natal_title: "Technical Supervisor",
-                exp_natal_company: "Natal do Bem 2025",
-                exp_natal_desc: "Acting as technical supervisor for Brazil's largest free Christmas event, an initiative of the Government of Goiás, Goiás Social, and OVG, ensuring operational and technological excellence of the attractions.",
-                // END NEW TRANSLATIONS
-                exp1_title: "Higher Education Instructor in AI and Cyber Security",
-                exp1_company: "Organization of Volunteers of Goiás (OVG)",
-                exp1_desc: "Working at the 'Tecendo o Futuro' Youth Center, I lead technological initiatives and coordinate actions to train young people in digital skills and innovation, empowering the next generation of talent.",
-                exp2_title: "Computer Vision Project Developer",
-                exp2_company: "Large-Scale Events",
-                exp2_desc: "I produced scalable computer vision solutions for mass events, such as the Totus Tuus edition at the Serra Dourada stadium, serving an audience of over 60,000 people and ensuring performance and reliability.",
-                exp3_title: "Technology Project Developer",
-                exp3_company: "Nossa Senhora da Assunção Parish",
-                exp3_desc: "I developed and implemented multiple projects for an institution with high visibility and demand, including interactive totems and autonomous systems for live broadcasting, optimizing communication and reach.",
-                projects_title: "<i class='fa-solid fa-flask-vial text-amber-500'></i>Research & Projects",
-                // NEW TRANSLATIONS
-                proj_crianca_title: "Social Startups Project",
-                proj_crianca_company: "Criança Esperança Grant <span class='text-sm ml-2'>(Submission)</span>",
-                proj_crianca_desc: "Project submission to Criança Esperança aimed at developing AI solutions for the population of the Novo Mundo sector in Goiânia, creating startups with vulnerable adolescents.",
-                // END NEW TRANSLATIONS
-                proj1_title: "Biomedical Engineering Project",
-                proj1_company: "Collaboration with AI students (INF - UFG)",
-                proj1_desc: "Currently in its initial phase, this project aims to create an innovative hardware and software solution at the intersection of health and technology, focusing on the intelligent acquisition and analysis of biological signals.",
-                proj2_title: "International Interdisciplinary Research",
-                proj2_company: "Partnership Laboratory of Cheminformatics (UFG) & Natural History Museum of France",
-                proj2_desc: "Invited to collaborate on a high-impact research project, linked to the UFG's Postgraduate Program in Pharmacy, to apply technology to solve complex challenges in the health field.",
-                proj3_title: "Voluntary Scientific Initiation (PIVIC/UFG)",
-                proj3_company: "Research Center in Neuroscience and Cardiovascular Physiology",
-                proj3_desc: "I evaluated the effects of physical training on autonomic modulation and oxidative stress in hypertensive rats, analyzing cardiovascular adaptations and health benefits.",
-                proj4_title: "Scientific Initiation Fellow (PIBIC/UFG)",
-                proj4_company: "Integrated Laboratory of Cardiovascular and Neurological Physiology",
-                proj4_desc: "I investigated cardiovascular changes in the offspring of rats subjected to the blockade of the Mas receptor, gaining experience in experimental research, animal handling, and cardiovascular physiology techniques.",
-                proj5_title: "Invitation for Research in Physics and Computation",
-                proj5_company: "Postgraduate Studies (UFG)",
-                proj5_desc: "After graduation, I received an invitation from a professor of physics and computation to participate in research focused on correlating a closed system of sinusoids with the heart's sinusoidal patterns, merging systems physics and cardiac physiology.",
-                proj6_title: "Clinical Research in Cardiac Rehabilitation",
-                proj6_company: "Cardiac Rehabilitation Research Nucleus (HGG and HC)",
-                proj6_desc: "I participated in a research project with human subjects at the General Hospital of Goiânia (HGG) and the Clinical Hospital (HC), focusing on cardiac rehabilitation and the analysis of clinical outcomes in patients.",
-                proj7_title: "Research Collaboration with Physics",
-                proj7_company: "Interface: Physiology and Physics (UFG)",
-                proj7_desc: "During my scientific initiation, I was invited to a collaboration with the physics department to test chemical compounds for treating neurally-caused hypertension, applying interdisciplinary principles in research.",
-                recognitions_title: "<i class='fa-solid fa-award text-blue-600'></i>Recognitions",
-                rec1_title: "Double Honorable Mention at the 30th ICB/UFG Week",
-                rec1_desc: "Received two honorable mentions for best work in the Health Sciences area for research on autonomic neuropathies in type 2 diabetes mellitus, using heart rate variability as an analysis tool.",
-                formation_title: "<i class='fa-solid fa-chalkboard-user text-amber-500'></i>Continuing Education and Events",
-                formation_list: "<li>Volunteer at Robótica 2024 - Latin America's largest robotics event.</li><li>Brasil Global Summit - Event on national and international technological trends.</li><li>1st Ideathon Lab Innovative Prototyping Solutions for Health – 2020.</li><li>XXIV and XXIII Brazilian Symposium on Cardiovascular Physiology.</li><li>Short Course: Heart Rate Variability (30th ICB Week).</li><li>Training: Methodological Aspects of Anthropometry and Nutritional Recall (20 hours).</li><li>15th CONPEEX - Congress of Research, Teaching, and Extension – 2018.</li><li>...and many other participations.</li>",
-                future_title: "<i class='fas fa-rocket text-blue-600'></i> Future Plans",
-                future_subtitle: "Deepening Knowledge in Quantum Computing",
-                future_desc: "The pursuit of knowledge is continuous. My next big step is a postgraduate degree in Quantum Computing, exploring how its principles can revolutionize the modeling of biological systems and the development of new drugs, taking medicine to a new frontier.",
-                contact_title: "<i class='fa-solid fa-inbox text-amber-500'></i>Get in Touch",
-                contact_subtitle: "Let's connect! Feel free to contact me through any of these channels.",
-                contact_lattes: "Academic Curriculum",
-                footer_text: "Created by Mateus Correia"
-            },
-            es: {
-                nav_home: "Inicio", nav_about: "Sobre Mí", nav_vision: "Visión", nav_experience: "Experiencia", nav_projects: "Proyectos", nav_recognitions: "Reconocimientos", nav_formation: "Formación", nav_future: "Futuro", nav_contact: "Contacto", nav_cv: "Mi CV",
-                home_title_prefix: "Mateus Correia es un",
-                typing_words: ["Especialista en IA.", "Investigador Biomédico.", "Científico de Datos."],
-                home_subtitle: "Conectando Ingeniería Biomédica y Visión por Computadora para crear soluciones robustas e innovadoras que resuelven desafíos complejos.",
-                home_button: "Conóceme",
-                about_title: "<i class='fas fa-terminal text-amber-500'></i> Sobre Mí",
-                about_p1_terminal: "Con una base sólida en <span class='terminal-keyword'>Biomedicina (UFG)</span> y un posgrado en <span class='terminal-keyword'>Inteligencia Artificial & Big Data (UTFPR)</span>, actualmente estoy profundizando mis conocimientos con una carrera en <span class='terminal-keyword'>Inteligencia Artificial y Ciencia de Datos</span> en la Universidad CIMATEC. La universidad alberga el <span class='terminal-keyword'>Latin America Quantum Computing Center (LAQCC)</span>, el primer centro de computación cuántica de Brasil, en asociación con la empresa francesa Atos. Mi carrera está dedicada a construir puentes entre la ciencia y la tecnología, aplicando <span class='terminal-keyword'>Python</span>, <span class='terminal-keyword'>R</span>, <span class='terminal-keyword'>Machine Learning</span> y <span class='terminal-keyword'>Redes Neuronales</span> para transformar datos complejos en avances significativos, con un interés especial en el sector de la salud.",
-                terminal_prompt_message: "Clic para ejecutar...",
-                vision_title: "<i class='fas fa-brain text-blue-600'></i> La Sinergia: Salud & Tecnología",
-                vision_subtitle: "Mi viaje comenzó en la salud, con investigaciones en neurociencia. Fue allí donde se encendió la chispa: ¿y si pudiéramos replicar el cerebro artificialmente? Esta pregunta unió mis dos mundos. Hoy, aplico mi conocimiento para crear sistemas de IA que resuelven problemas complejos en diversas áreas, con un enfoque especial y apasionado en el sector de la salud.",
-                vision_innovation: "INNOVACIÓN",
-                experience_title: "<i class='fa-solid fa-briefcase text-blue-600'></i>Experiencia Profesional",
-                // NUEVAS TRADUCCIONES
-                exp_natal_title: "Supervisor Técnico",
-                exp_natal_company: "Natal do Bem 2025",
-                exp_natal_desc: "Actuando como supervisor técnico del evento navideño gratuito más grande de Brasil, una iniciativa del Gobierno de Goiás, Goiás Social y OVG, garantizando la excelencia operativa y tecnológica de las atracciones.",
-                // FIN NUEVAS TRADUCCIONES
-                exp1_title: "Instructor de Nivel Superior en IA y Ciberseguridad",
-                exp1_company: "Organización de Voluntarios de Goiás (OVG)",
-                exp1_desc: "Trabajando en el Centro Juvenil 'Tecendo o Futuro', lidero iniciativas tecnológicas y coordino acciones para capacitar a jóvenes en competencias digitales e innovación, empoderando a la próxima generación de talentos.",
-                exp2_title: "Desarrollador de Proyectos de Visión por Computadora",
-                exp2_company: "Eventos a Gran Escala",
-                exp2_desc: "Produje soluciones escalables de visión por computadora para eventos masivos, como en la edición de Totus Tuus en el estadio Serra Dourada, atendiendo a una audiencia de más de 60,000 personas y garantizando rendimiento y confiabilidad.",
-                exp3_title: "Desarrollador de Proyectos de Tecnología",
-                exp3_company: "Parroquia Nossa Senhora da Assunção",
-                exp3_desc: "Desarrollé e implementé múltiples proyectos para una institución de gran visibilidad y demanda, incluyendo tótems interactivos y sistemas autónomos para transmisiones en vivo, optimizando la comunicación y el alcance.",
-                projects_title: "<i class='fa-solid fa-flask-vial text-amber-500'></i>Investigación & Proyectos",
-                // NUEVAS TRADUCCIONES
-                proj_crianca_title: "Proyecto Startups Sociales",
-                proj_crianca_company: "Subvención Criança Esperança <span class='text-sm ml-2'>(Presentación)</span>",
-                proj_crianca_desc: "Presentación de proyecto para Criança Esperança con el objetivo de desarrollar soluciones con IA para la población del sector Novo Mundo en Goiânia, creando startups con adolescentes en situación de vulnerabilidad.",
-                // FIN NUEVAS TRADUCCIONES
-                proj1_title: "Proyecto de Ingeniería Biomédica",
-                proj1_company: "Colaboración con estudiantes de IA (INF - UFG)",
-                proj1_desc: "Actualmente en su fase inicial, este proyecto busca crear una solución innovadora de hardware y software en la intersección de la salud y la tecnología, centrándose en la adquisición y análisis inteligente de señales biológicas.",
-                proj2_title: "Investigación Interdisciplinaria Internacional",
-                proj2_company: "Asociación Laboratory of Cheminformatics (UFG) & Museo de Historia Natural de Francia",
-                proj2_desc: "Invitado a colaborar en un proyecto de investigación de alto impacto, vinculado al Programa de Posgrado en Farmacia de la UFG, para aplicar tecnología en la resolución de desafíos complejos en el campo de la salud.",
-                proj3_title: "Iniciación Científica Voluntaria (PIVIC/UFG)",
-                proj3_company: "Centro de Investigación en Neurociencia y Fisiología Cardiovascular",
-                proj3_desc: "Evalué los efectos del entrenamiento físico en la modulación autonómica y el estrés oxidativo en ratas hipertensas, analizando adaptaciones cardiovasculares y beneficios para la salud.",
-                proj4_title: "Becario de Iniciación Científica (PIBIC/UFG)",
-                proj4_company: "Laboratorio Integrado de Fisiología Cardiovascular y Neurológica",
-                proj4_desc: "Investigué los cambios cardiovasculares en la descendencia de ratas sometidas al bloqueo del receptor Mas. Adquirí experiencia en investigación experimental, manejo de animales y técnicas de fisiología cardiovascular.",
-                proj5_title: "Invitación a Investigación en Física y Computación",
-                proj5_company: "Postgrado (UFG)",
-                proj5_desc: "Después de graduarme, recibí una invitación de un profesor de física y computación para participar en una investigación centrada en correlacionar un sistema cerrado de sinusoides con los patrones sinusoidales del corazón, fusionando la física de sistemas y la fisiología cardíaca.",
-                proj6_title: "Investigación Clínica en Rehabilitación Cardíaca",
-                proj6_company: "Núcleo de Investigación en Rehabilitación Cardíaca (HGG y HC)",
-                proj6_desc: "Participé en un proyecto de investigación con humanos en el Hospital General de Goiânia (HGG) y el Hospital de Clínicas (HC), enfocado en la rehabilitación cardíaca y el análisis de resultados clínicos en pacientes.",
-                proj7_title: "Colaboración de Investigación con la Física",
-                proj7_company: "Interfaz: Fisiología y Física (UFG)",
-                proj7_desc: "Durante mi iniciación científica, fui invitado a una colaboración con el departamento de física para probar compuestos químicos para el tratamiento de la hipertensión de causa neuronal, aplicando principios interdisciplinarios en la investigación.",
-                recognitions_title: "<i class='fa-solid fa-award text-blue-600'></i>Reconocimientos",
-                rec1_title: "Doble Mención de Honor en la 30ª Semana del ICB/UFG",
-                rec1_desc: "Recibí dos menciones de honor como mejor trabajo en el área de Ciencias de la Salud por investigaciones sobre neuropatías autonómicas en la diabetes mellitus tipo 2, utilizando la variabilidad de la frecuencia cardíaca como herramienta de análisis.",
-                formation_title: "<i class='fa-solid fa-chalkboard-user text-amber-500'></i>Formación Complementaria y Eventos",
-                formation_list: "<li>Voluntario en Robótica 2024 - El mayor evento de robótica de América Latina.</li><li>Brasil Global Summit - Evento sobre tendencias tecnológicas nacionales e internacionales.</li><li>1er Ideathon Lab Soluciones Innovadoras de Prototipado para la Salud – 2020.</li><li>XXIV y XXIII Simposio Brasileño de Fisiología Cardiovascular.</li><li>Minicurso: Variabilidad de la Frecuencia Cardíaca (30ª Semana del ICB).</li><li>Capacitación: Aspectos Metodológicos de Antropometría y Recordatorio Nutricional (20 horas).</li><li>15º CONPEEX - Congreso de Investigación, Enseñanza y Extensión – 2018.</li><li>...y varias otras participaciones.</li>",
-                future_title: "<i class='fas fa-rocket text-blue-600'></i> Planes Futuros",
-                future_subtitle: "Profundización en Computación Cuántica",
-                future_desc: "La búsqueda del conocimiento es continua. Mi próximo gran paso es un posgrado en Computación Cuántica, explorando cómo sus principios pueden revolucionar el modelado de sistemas biológicos y el desarrollo de nuevos fármacos, llevando la medicina a una nueva frontera.",
-                contact_title: "<i class='fa-solid fa-inbox text-amber-500'></i>Contacto",
-                contact_subtitle: "¡Conectemos! No dudes en contactarme a través de cualquiera de estos canales.",
-                contact_lattes: "Currículum Académico",
-                footer_text: "Creado por Mateus Correia"
-            }
-        };
-        let currentLang = localStorage.getItem('language') || 'pt';
-        let words = [];
-        let typeTimeout;
+            /* === LOGIC === */
+            let currentLang = localStorage.getItem('language') || 'pt';
+            let words = [];
+            let typeTimeout;
+            let canvasTextInterval;
 
-        const setLanguage = (lang) => {
-            if (!translations[lang]) lang = 'pt';
-            currentLang = lang;
-            localStorage.setItem('language', lang);
-            words = translations[lang].typing_words;
+            const updateContent = (lang) => {
+                // Texts
+                document.querySelectorAll('[data-translate-key]').forEach(el => {
+                    const key = el.getAttribute('data-translate-key');
+                    if(translations[lang][key]) el.innerHTML = translations[lang][key];
+                });
+                
+                // Typing Effect Reset
+                words = translations[lang].typing_words;
+                if(typeTimeout) clearTimeout(typeTimeout);
+                startTyping();
 
-            document.querySelectorAll('[data-translate-key]').forEach(el => {
-                const key = el.getAttribute('data-translate-key');
-                if (translations[lang][key]) {
-                    if (key === 'home_title_prefix') {
-                        el.childNodes[0].nodeValue = translations[lang][key] + ' ';
-                    } else {
-                        el.innerHTML = translations[lang][key];
+                // Buttons State
+                document.querySelectorAll('.lang-btn').forEach(btn => {
+                    btn.classList.remove('ring-2', 'ring-blue-500', 'opacity-100');
+                    btn.classList.add('opacity-60');
+                    if(btn.dataset.lang === lang) {
+                        btn.classList.remove('opacity-60');
+                        btn.classList.add('ring-2', 'ring-blue-500', 'opacity-100');
                     }
-                }
-            });
-            document.documentElement.lang = lang;
-            wordIndex = 0; charIndex = 0; isDeleting = false;
-            
-            document.querySelectorAll('.lang-btn').forEach(btn => {
-                btn.classList.remove('active');
-                if (btn.getAttribute('data-lang') === lang) btn.classList.add('active');
-            });
-            initInteractiveTerminal();
-        };
-
-        let synergyAnimationId;
-        const initSynergyAnimation = () => {
-            const container = document.getElementById('synergy-container');
-            const canvas = document.getElementById('synergy-canvas');
-            if (!canvas || !container) return;
-
-            const ctx = canvas.getContext('2d');
-            let width = container.clientWidth;
-            let height = container.clientHeight;
-            canvas.width = width;
-            canvas.height = height;
-
-            const mouse = { x: undefined, y: undefined, radius: 100 };
-
-            container.addEventListener('mousemove', e => {
-                const rect = container.getBoundingClientRect();
-                mouse.x = e.clientX - rect.left;
-                mouse.y = e.clientY - rect.top;
-            });
-
-            container.addEventListener('mouseleave', () => {
-                mouse.x = undefined;
-                mouse.y = undefined;
-            });
-
-
-            let nodes = [];
-            let particles = [];
-            const maxNodes = 50;
-            const healthColor = 'rgba(251, 188, 4, 0.8)'; // yellow
-            const techColor = 'rgba(26, 115, 232, 0.8)'; // blue
-
-            class Node {
-                constructor(x, y, color) {
-                    this.x = x; this.y = y;
-                    this.vx = (Math.random() - 0.5) * 0.3; 
-                    this.vy = (Math.random() - 0.5) * 0.3;
-                    this.radius = Math.random() * 2 + 2;
-                    this.color = color;
-                }
-                update() {
-                    if (this.x + this.radius > width || this.x - this.radius < 0) this.vx = -this.vx;
-                    if (this.y + this.radius > height || this.y - this.radius < 0) this.vy = -this.vy;
-                    this.x += this.vx;
-                    this.y += this.vy;
-                }
-                draw() {
-                    ctx.beginPath();
-                    ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-                    ctx.fillStyle = this.color;
-                    ctx.fill();
-                }
-            }
-            
-            function createNodes() {
-                for (let i = 0; i < maxNodes; i++) {
-                    nodes.push(new Node(
-                        Math.random() * (width * 0.8) + (width * 0.1),
-                        Math.random() * (height * 0.8) + (height * 0.1),
-                        Math.random() > 0.5 ? healthColor : techColor
-                    ));
-                }
-            }
-
-            function animate() {
-                synergyAnimationId = requestAnimationFrame(animate);
-                ctx.clearRect(0, 0, width, height);
-
-                nodes.forEach(node => {
-                    node.update();
-                    node.draw();
                 });
 
-                for (let i = 0; i < nodes.length; i++) {
-                    for (let j = i + 1; j < nodes.length; j++) {
-                        let dist = Math.sqrt(Math.pow(nodes[j].x - nodes[i].x, 2) + Math.pow(nodes[j].y - nodes[i].y, 2));
-                        let mouseDist = mouse.x ? Math.sqrt(Math.pow(((nodes[i].x + nodes[j].x)/2) - mouse.x, 2) + Math.pow(((nodes[i].y + nodes[j].y)/2) - mouse.y, 2)) : Infinity;
+                // Reset Terminal
+                document.getElementById('terminal-content').innerHTML = '';
+                document.getElementById('terminal-hint').style.display = 'block';
+            };
 
-                        if (dist < 120) {
-                            let opacity = 1 - dist / 120;
-                            let lineWidth = 0.5;
-                            let color = 'rgba(150, 150, 150,';
+            const setLanguage = (lang) => {
+                if(!translations[lang]) lang = 'pt';
+                currentLang = lang;
+                localStorage.setItem('language', lang);
+                updateContent(lang);
+            };
 
-                            if (mouseDist < mouse.radius) {
-                                opacity = 1 - mouseDist / mouse.radius;
-                                lineWidth = 1.5;
-                                color = 'rgba(255, 255, 255,';
-                            }
-                            
-                            ctx.beginPath();
-                            ctx.moveTo(nodes[i].x, nodes[i].y);
-                            ctx.lineTo(nodes[j].x, nodes[j].y);
-                            ctx.strokeStyle = `${color} ${opacity * 0.5})`;
-                            ctx.lineWidth = lineWidth;
-                            ctx.stroke();
-                        }
-                    }
+            // Typing Effect Logic
+            let wordIndex = 0, charIndex = 0, isDeleting = false;
+            const typingElement = document.getElementById("typing-text");
+            
+            function startTyping() {
+                if(!typingElement) return;
+                const currentWord = words[wordIndex];
+                const typeSpeed = isDeleting ? 50 : 100;
+                
+                if(isDeleting) {
+                    typingElement.textContent = currentWord.substring(0, charIndex - 1);
+                    charIndex--;
+                } else {
+                    typingElement.textContent = currentWord.substring(0, charIndex + 1);
+                    charIndex++;
+                }
+
+                if(!isDeleting && charIndex === currentWord.length) {
+                    isDeleting = true;
+                    typeTimeout = setTimeout(startTyping, 2000);
+                } else if(isDeleting && charIndex === 0) {
+                    isDeleting = false;
+                    wordIndex = (wordIndex + 1) % words.length;
+                    typeTimeout = setTimeout(startTyping, 500);
+                } else {
+                    typeTimeout = setTimeout(startTyping, typeSpeed);
                 }
             }
 
+            // Terminal Logic
+            const terminalArea = document.getElementById('terminal-click-area');
+            terminalArea.addEventListener('click', () => {
+                const hint = document.getElementById('terminal-hint');
+                const content = document.getElementById('terminal-content');
+                if(hint.style.display === 'none') return; // Already typed
+                
+                hint.style.display = 'none';
+                const text = translations[currentLang].about_p1_terminal;
+                
+                content.innerHTML = text;
+                content.animate([
+                    { opacity: 0 },
+                    { opacity: 1 }
+                ], { duration: 1000, fill: 'forwards' });
+            });
+
+            // Lang Click Listeners
+            document.querySelectorAll('.lang-selector').forEach(sel => {
+                sel.addEventListener('click', (e) => {
+                    const btn = e.target.closest('.lang-btn');
+                    if(btn) setLanguage(btn.dataset.lang);
+                });
+            });
+
+            // Mobile Menu
+            const mobileMenu = document.getElementById('mobile-menu');
+            document.getElementById('hamburger-btn').addEventListener('click', () => {
+                mobileMenu.classList.remove('translate-x-full');
+            });
+            document.getElementById('close-menu-btn').addEventListener('click', () => {
+                mobileMenu.classList.add('translate-x-full');
+            });
+            document.querySelectorAll('.nav-link-mobile').forEach(link => {
+                link.addEventListener('click', () => mobileMenu.classList.add('translate-x-full'));
+            });
+
+            // Time Update
+            const updateTime = () => {
+                const now = new Date();
+                const timeString = now.toLocaleTimeString(currentLang, {hour:'2-digit', minute:'2-digit'});
+                const el = document.getElementById('current-time-desktop');
+                if(el) el.textContent = `${timeString} (Goiânia)`;
+            };
+            setInterval(updateTime, 60000); // Update every minute
+            updateTime();
+
+            /* === ANIMATIONS (Scroll) === */
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        if (!synergyAnimationId) {
-                            width = container.clientWidth;
-                            height = container.clientHeight;
-                            canvas.width = width;
-                            canvas.height = height;
-                            nodes = [];
-                            createNodes();
-                            animate();
-                            setTimeout(() => container.classList.add('word-visible'), 1000);
-                        }
-                    } else {
-                        if (synergyAnimationId) {
-                            cancelAnimationFrame(synergyAnimationId);
-                            synergyAnimationId = null;
-                            container.classList.remove('word-visible');
-                            ctx.clearRect(0, 0, width, height);
-                        }
-                    }
+                    if(entry.isIntersecting) entry.target.classList.add('active');
                 });
             }, { threshold: 0.1 });
+            document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-            observer.observe(container);
-        };
-        
-        let wordIndex = 0, charIndex = 0, isDeleting = false;
-        const type = () => {
-            if (typeTimeout) clearTimeout(typeTimeout);
-            if (!words || words.length === 0) return;
-            const typingElement = document.getElementById("typing-text");
-            if (!typingElement) return;
-            const currentWord = words[wordIndex];
-            let textToShow = isDeleting ? currentWord.substring(0, charIndex - 1) : currentWord.substring(0, charIndex + 1);
-            typingElement.innerHTML = textToShow;
-            charIndex = isDeleting ? charIndex - 1 : charIndex + 1;
-            let typeSpeed = isDeleting ? 75 : 150;
-            if (!isDeleting && charIndex === currentWord.length) {
-                typeSpeed = 2000; isDeleting = true;
-            } else if (isDeleting && charIndex === 0) {
-                isDeleting = false; wordIndex = (wordIndex + 1) % words.length; typeSpeed = 500;
-            }
-            typeTimeout = setTimeout(type, typeSpeed);
-        };
-        
-        const initInteractiveTerminal = () => {
-            const terminalWindow = document.querySelector('.terminal-window-card');
-            const promptMessage = document.getElementById('terminal-prompt-message');
-            const terminalContent = document.getElementById('terminal-content');
-            if(!terminalWindow || !promptMessage || !terminalContent) return;
-            
-            terminalContent.innerHTML = '';
-            promptMessage.style.display = 'block';
+            // Progress Bar
+            window.addEventListener('scroll', () => {
+                const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+                const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                const scrolled = (winScroll / height) * 100;
+                document.getElementById("scroll-progress").style.width = scrolled + "%";
+            });
 
-            const startTerminalAnimation = () => {
-                promptMessage.style.display = 'none';
+            /* === THEMATIC SYNERGY CANVAS (3D DNA/NEURAL SIMULATION) === */
+            const initCanvas = () => {
+                const canvas = document.getElementById('synergy-canvas');
+                const container = document.getElementById('synergy-container');
+                const wordElement = document.getElementById('innovation-word');
+                if(!canvas) return;
                 
-                const fullText = translations[currentLang]?.about_p1_terminal || '';
-                const parts = fullText.split(/(<span class='terminal-keyword'>.*?<\/span>)/);
-                let currentHTML = '';
-                let partIndex = 0;
+                const ctx = canvas.getContext('2d');
+                let w, h;
+                
+                // 3D Variables
+                const fov = 350; // Field of view
+                let particles = [];
+                const numParticles = 80;
+                let rotateX = 0;
+                let rotateY = 0;
 
-                function typePart() {
-                    if (partIndex >= parts.length) return;
-                    let part = parts[partIndex];
-                    if (part.startsWith('<span')) {
-                        currentHTML += part;
-                        terminalContent.innerHTML = currentHTML;
-                        partIndex++;
-                        setTimeout(typePart, 50);
-                    } else {
-                        let charIdx = 0;
-                        function typeChar() {
-                            if (charIdx < part.length) {
-                                currentHTML += part.charAt(charIdx);
-                                terminalContent.innerHTML = currentHTML;
-                                charIdx++;
-                                setTimeout(typeChar, 15);
-                            } else {
-                                partIndex++;
-                                typePart();
+                const resize = () => {
+                    w = canvas.width = container.offsetWidth;
+                    h = canvas.height = container.offsetHeight;
+                    createParticles();
+                };
+                window.addEventListener('resize', resize);
+
+                class Point3D {
+                    constructor(x, y, z, color) {
+                        this.x = x;
+                        this.y = y;
+                        this.z = z;
+                        this.baseX = x;
+                        this.baseY = y;
+                        this.baseZ = z;
+                        this.color = color;
+                        this.size = Math.random() * 2 + 1.5;
+                        this.pulse = Math.random() * Math.PI;
+                        
+                        // Orbital Properties
+                        this.baseAngle = Math.atan2(z, x);
+                        this.orbitRadius = Math.sqrt(x*x + z*z);
+                        this.speed = Math.random() * 0.015 + 0.005;
+                        this.isAstro = false;
+                    }
+                    
+                    updateAstro() {
+                        if(this.isAstro) {
+                            this.baseAngle += this.speed;
+                            this.x = Math.sin(this.baseAngle) * this.orbitRadius;
+                            this.z = Math.cos(this.baseAngle) * this.orbitRadius;
+                        }
+                    }
+                    
+                    project() {
+                        const cosX = Math.cos(rotateX);
+                        const sinX = Math.sin(rotateX);
+                        const cosY = Math.cos(rotateY);
+                        const sinY = Math.sin(rotateY);
+
+                        let x1 = this.x * cosY - this.z * sinY;
+                        let z1 = this.z * cosY + this.x * sinY;
+                        let y1 = this.y * cosX - z1 * sinX;
+                        let z2 = z1 * cosX + this.y * sinX;
+
+                        const scale = fov / (fov + z2 + 300); 
+                        const x2d = (x1 * scale) + w / 2;
+                        const y2d = (y1 * scale) + h / 2;
+                        
+                        return { x: x2d, y: y2d, scale: scale, z: z2 };
+                    }
+                }
+
+                function createParticles() {
+                    particles = [];
+                    // Responsive DNA size
+                    const isMobile = w < 768;
+                    const spreadX = isMobile ? 100 : 180;
+                    const spreadY = isMobile ? 12 : 15;
+                    const count = isMobile ? 50 : 80;
+
+                    // DNA Strands
+                    for(let i = 0; i < count; i++) {
+                        const t = i * 0.3; // spacing
+                        const x = Math.sin(t) * spreadX;
+                        const z = Math.cos(t) * spreadX;
+                        const y = (i * spreadY) - (count * spreadY / 2); // Spread vertically centered
+                        
+                        // Push Strand 1 particle
+                        particles.push(new Point3D(x, y, z, '#2563eb')); 
+                        // Push Strand 2 particle (Phase shifted 180deg: -x, -z)
+                        particles.push(new Point3D(-x, y, -z, '#d97706'));
+                    }
+                    
+                    // Orbiting Astros (Satellites)
+                    for(let i=0; i<6; i++) {
+                        const angle = (Math.PI * 2 / 6) * i;
+                        const radius = spreadX * 2.2; // Wider orbit
+                        const x = Math.sin(angle) * radius;
+                        const z = Math.cos(angle) * radius;
+                        const y = (Math.random() - 0.5) * 300; 
+                        
+                        const p = new Point3D(x, y, z, '#fbbc04'); // Accent color
+                        p.size = 2.5; // Slightly larger
+                        p.isAstro = true;
+                        particles.push(p);
+                    }
+                    
+                    // Background particles
+                    for(let i=0; i<30; i++) {
+                        const p = new Point3D(
+                            (Math.random() - 0.5) * 800,
+                            (Math.random() - 0.5) * 800,
+                            (Math.random() - 0.5) * 800,
+                            'rgba(156, 163, 175, 0.4)'
+                        );
+                        p.size = Math.random() * 1;
+                        particles.push(p);
+                    }
+                }
+                
+                resize();
+
+                function animate() {
+                    ctx.clearRect(0,0,w,h);
+                    
+                    rotateY += 0.008; 
+                    rotateX = Math.sin(Date.now() * 0.001) * 0.1;
+                    
+                    // Update Orbitals FIRST
+                    particles.forEach(p => {
+                        if(p.isAstro) p.updateAstro();
+                    });
+                    
+                    // 1. PROJECT ALL POINTS
+                    const projectedPoints = particles.map((p, index) => {
+                        const proj = p.project();
+                        return { ...proj, p: p, originalIndex: index };
+                    });
+                    
+                    // 2. DRAW CONNECTIONS
+                    ctx.lineWidth = 1;
+                    
+                    for(let i=0; i<projectedPoints.length; i++) {
+                        const current = projectedPoints[i];
+                        
+                        if(current.p.color.includes('rgba') || current.p.isAstro) continue;
+
+                        const isStrand1 = (i % 2 === 0);
+                        
+                        // Backbone
+                        if(i + 2 < projectedPoints.length) {
+                            const nextInStrand = projectedPoints[i+2];
+                            if(!nextInStrand.p.color.includes('rgba') && !nextInStrand.p.isAstro) {
+                                ctx.beginPath();
+                                ctx.moveTo(current.x, current.y);
+                                ctx.lineTo(nextInStrand.x, nextInStrand.y);
+                                const depthAlpha = (current.scale + nextInStrand.scale) / 2;
+                                ctx.strokeStyle = isStrand1 
+                                    ? `rgba(37, 99, 235, ${depthAlpha * 0.5})` 
+                                    : `rgba(217, 119, 6, ${depthAlpha * 0.5})`; 
+                                ctx.stroke();
                             }
                         }
-                        typeChar();
-                    }
-                }
-                typePart();
-            };
-            
-            const clickHandler = () => {
-                startTerminalAnimation();
-                terminalWindow.removeEventListener('click', clickHandler);
-            };
-            terminalWindow.addEventListener('click', clickHandler);
-        };
 
-        particlesJS('particles-js', { "particles": { "number": { "value": 80, "density": { "enable": true, "value_area": 800 } }, "color": { "value": "#cccccc" }, "shape": { "type": "circle" }, "opacity": { "value": 0.5, "random": true }, "size": { "value": 2, "random": true }, "line_linked": { "enable": true, "distance": 120, "color": "#cccccc", "opacity": 0.4, "width": 1 }, "move": { "enable": true, "speed": 1.5, "direction": "none", "random": true, "straight": false, "out_mode": "out", "bounce": false } }, "interactivity": { "detect_on": "canvas", "events": { "onhover": { "enable": true, "mode": "grab" }, "onclick": { "enable": false } } }, "retina_detect": true });
-        
-        const updateTime=()=>{const e=document.getElementById("current-time-desktop"),t=document.getElementById("current-time-mobile");if(e&&t){const n=new Date,o=(new Intl.DateTimeFormat(currentLang,{timeZone:"America/Sao_Paulo",hour:"2-digit",minute:"2-digit"})).format(n),a=(new Intl.DateTimeFormat(currentLang,{timeZone:"America/Sao_Paulo",weekday:"long",day:"2-digit",month:"long"})).format(n);const l=`${a}<br>${o} (Goiânia)`;e.innerHTML=l,t.innerHTML=l}};setInterval(updateTime,1e3);updateTime();
-        
-        const hamburgerBtn=document.getElementById("hamburger-btn"),closeMenuBtn=document.getElementById("close-menu-btn"),mobileMenu=document.getElementById("mobile-menu"),mobileNavLinks=document.querySelectorAll(".nav-link-mobile"),closeMenu=()=>{mobileMenu.classList.add("-translate-x-full")};hamburgerBtn.addEventListener("click",()=>{mobileMenu.classList.remove("-translate-x-full")}),closeMenuBtn.addEventListener("click",closeMenu),mobileNavLinks.forEach(e=>{e.addEventListener("click",closeMenu)});
-        
-        const cursor=document.querySelector(".cursor");window.addEventListener("mousemove",e=>{cursor.style.transform=`translate(${e.clientX}px, ${e.clientY}px)`});document.body.addEventListener("mouseover",e=>{e.target.matches("a, button, .lang-btn, input, .terminal-window-card, #synergy-canvas")?document.body.classList.add("cursor-hover"):document.body.classList.remove("cursor-hover")});
-        
-        const progressBar=document.getElementById("scroll-progress"),mainContentEl=document.querySelector(".main-content");mainContentEl.addEventListener("scroll",()=>{const e=mainContentEl.scrollHeight-mainContentEl.clientHeight,t=mainContentEl.scrollTop/e*100;progressBar.style.width=`${t}%`});const mainContent=document.querySelector(".main-content"),sections=document.querySelectorAll("main section"),navLinksDesktop=document.querySelectorAll("#nav-links-desktop .nav-link"),observerOptions={root:mainContent,rootMargin:"-40% 0px -60% 0px",threshold:0},sectionObserver=new IntersectionObserver(e=>{e.forEach(e=>{if(e.isIntersecting){const t=e.target.id;navLinksDesktop.forEach(e=>{e.classList.remove("active"),e.getAttribute("href").substring(1)===t&&e.classList.add("active")})}})},observerOptions);sections.forEach(e=>{sectionObserver.observe(e)});const animationObserver=new IntersectionObserver((e,t)=>{e.forEach(e=>{e.isIntersecting&&(e.target.classList.add("visible"),t.unobserve(e.target))})},{threshold:.1});document.querySelectorAll(".scroll-animate").forEach(e=>{animationObserver.observe(e)});
-        
-        document.querySelectorAll(".lang-selector").forEach(selector => {
-            selector.addEventListener('click', (event) => {
-                const langBtn = event.target.closest('.lang-btn');
-                if (langBtn) {
-                    const lang = langBtn.getAttribute('data-lang');
-                    if(lang && lang !== currentLang) {
-                        setLanguage(lang);
-                        if (typeTimeout) clearTimeout(typeTimeout);
-                        type();
+                        // Rungs (Nucleotides)
+                        if(isStrand1 && (i + 1 < projectedPoints.length)) {
+                            const pair = projectedPoints[i+1];
+                            if(!pair.p.isAstro) {
+                                ctx.beginPath();
+                                ctx.moveTo(current.x, current.y);
+                                ctx.lineTo(pair.x, pair.y);
+                                const depthAlpha = (current.scale + pair.scale) / 2;
+                                ctx.strokeStyle = `rgba(156, 163, 175, ${depthAlpha * 0.3})`;
+                                ctx.stroke();
+                            }
+                        }
                     }
+
+                    // 3. DRAW PARTICLES
+                    const drawOrder = [...projectedPoints].sort((a, b) => b.z - a.z);
+
+                    drawOrder.forEach(point => {
+                        const alpha = Math.min(1, (point.scale * 0.9)); 
+                        ctx.globalAlpha = alpha;
+                        
+                        ctx.beginPath();
+                        ctx.arc(point.x, point.y, (point.p.size + 0.5) * point.scale, 0, Math.PI * 2);
+                        ctx.fillStyle = point.p.color;
+                        
+                        // Glow for front particles and Astros
+                        if((point.scale > 0.8 && !point.p.color.includes('rgba')) || point.p.isAstro) {
+                             ctx.shadowBlur = 10;
+                             ctx.shadowColor = point.p.color;
+                        } else {
+                             ctx.shadowBlur = 0;
+                        }
+                        
+                        ctx.fill();
+                        ctx.shadowBlur = 0; // Reset
+                        ctx.globalAlpha = 1;
+                    });
+
+                    requestAnimationFrame(animate);
                 }
+                
+                const canvasObserver = new IntersectionObserver((entries) => {
+                    if(entries[0].isIntersecting) {
+                        animate();
+                        startTextCycle();
+                    } else {
+                         clearInterval(canvasTextInterval);
+                    }
+                });
+                canvasObserver.observe(container);
+
+                // Text Cycle
+                function startTextCycle() {
+                    const words = ["FUTURO", "INOVAÇÃO", "BIOMEDICINA", "INTELIGÊNCIA", "NEUROCIÊNCIA"];
+                    let idx = 0;
+                    if(canvasTextInterval) clearInterval(canvasTextInterval);
+                    
+                    // Set initial word
+                    wordElement.textContent = words[0];
+                    wordElement.classList.add('active');
+
+                    canvasTextInterval = setInterval(() => {
+                        wordElement.classList.remove('active');
+                        wordElement.classList.add('exit');
+                        
+                        setTimeout(() => {
+                            idx = (idx + 1) % words.length;
+                            wordElement.textContent = words[idx];
+                            wordElement.classList.remove('exit');
+                            wordElement.classList.add('active');
+                        }, 800);
+                    }, 4000);
+                }
+            };
+
+            /* === PARTICLES.JS OPTIMIZED (BACKGROUND) === */
+            particlesJS('particles-js', {
+                "particles": {
+                    "number": { "value": 30, "density": { "enable": true, "value_area": 1000 } },
+                    "color": { "value": "#94a3b8" }, // Cool gray
+                    "opacity": { "value": 0.2 },
+                    "size": { "value": 2 },
+                    "line_linked": { "enable": true, "distance": 200, "color": "#cbd5e1", "opacity": 0.15, "width": 1 },
+                    "move": { "enable": true, "speed": 0.5 }
+                },
+                "interactivity": { "events": { "onhover": { "enable": false } } }
             });
+
+            // Initialize
+            setLanguage(currentLang);
+            initCanvas();
         });
-
-        // Initial setup calls
-        if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
-            document.body.classList.add('touch-device');
-        }
-
-        setLanguage(currentLang);
-        type();
-        initSynergyAnimation();
-    });
-</script>
-
+    </script>
 </body>
 </html>
